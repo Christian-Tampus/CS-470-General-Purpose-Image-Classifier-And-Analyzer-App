@@ -1,0 +1,132 @@
+/*UPDATE VERSION [1]*/
+
+/*
+#==================================================
+#Class: CS-470 Artificial Intelligence
+#Professor: Amit Das
+#Name: Christian Tampus
+#Description: General Purpose Image Classifier & Analyzer
+#Assignment: Semester Project
+#==================================================
+*/
+
+:root {
+    --large-font: 60px;
+    --small-font: 40px;
+    --button-font: 20px;
+    --prediction-font: 30px;
+    --text-color: white;
+    --text-shadow:
+        1px 1px 0px gray,
+        2px 2px 0px gray,
+        3px 3px 0px gray,
+        4px 4px 0px black,
+        5px 5px 10px black;
+    --image-size: 360px;
+}
+
+#mainContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: auto;
+    background: linear-gradient(-45deg, #0f172a, #3b82f6, #e0f2fe);
+    animation: gradientShift 10s ease infinite;
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+#title-author-div {
+    margin: 0px;
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+}
+
+.text-style {
+    width: 100%;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+#title {
+    font-size: var(--large-font);
+    color: var(--text-color);
+    text-shadow: var(--text-shadow);
+    margin: 0px;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#author {
+    font-size: var(--small-font);
+    color: var(--text-color);
+    text-shadow: var(--text-shadow);
+    margin: 0px;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#imageToPredict {
+    width: var(--image-size);
+    height: var(--image-size);
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border: 50px solid rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+}
+
+.button-style {
+    font-size: var(--button-font);
+    color: var(--text-color);
+    background-color: #007BFF;
+    padding: 10px;
+    border-radius: 10px;
+    display: block;
+    margin-top: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 200px;
+}
+
+.button-style:hover {
+    background-color: #0056b3;
+    cursor: pointer;
+}
+
+#predictButton {
+    border: none;
+}
+
+#result {
+    font-size: var(--prediction-font);
+    color: var(--text-color);
+    text-shadow: var(--text-shadow);
+    width: 800px;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 25px;
+    margin-top: 25px;
+    padding: 20px;
+    border-radius: 20px;
+}
