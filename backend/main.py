@@ -13,3 +13,7 @@ async def root():
 async def test():
     print("[SERVER] Test endpoint hit!")
     return {"status": "OK"}
+
+@app.on_event("startup")
+async def startup_event():
+    print("[SERVER] App startup complete!")
