@@ -1,4 +1,4 @@
-#UPDATE VERSION [12]
+#UPDATE VERSION [13]
 
 #==================================================
 #Class: CS-470 Artificial Intelligence
@@ -26,15 +26,12 @@ print("[SERVER] Main.py Program Start!")
 import io
 import os
 import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
 import tensorflow as tf
 from PIL import Image
 from pathlib import Path
 from fastapi import FastAPI, File, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from tensorflow.keras.applications.efficientnet import preprocess_input
-from sklearn.metrics import confusion_matrix, accuracy_score, classification_report
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 from fastapi import Request
@@ -80,12 +77,12 @@ MODEL_VERSIONS = {
 #AIModel Directory
 #==================================================
 MODEL_DIRECTORY = {
-    "MAIN_CLASSIFIER_MODEL": Path("AIModels") / (MODEL_NAMES["MAIN_CLASSIFIER_MODEL"] + str(MODEL_VERSIONS["MAIN_CLASSIFIER_MODEL"]) + ".h5"),
-    "CAR_MODEL_ATTRIBUTE_CLASSIFIER_MODEL": Path("AIModels") / (MODEL_NAMES["CAR_MODEL_ATTRIBUTE_CLASSIFIER_MODEL"] + str(MODEL_VERSIONS["CAR_MODEL_ATTRIBUTE_CLASSIFIER_MODEL"]) + ".h5"),
-    "CAT_BREED_ATTRIBUTE_CLASSIFIER_MODEL": Path("AIModels") / (MODEL_NAMES["CAT_BREED_ATTRIBUTE_CLASSIFIER_MODEL"] + str(MODEL_VERSIONS["CAT_BREED_ATTRIBUTE_CLASSIFIER_MODEL"]) + ".h5"),
-    "DOG_BREED_ATTRIBUTE_CLASSIFIER_MODEL": Path("AIModels") / (MODEL_NAMES["DOG_BREED_ATTRIBUTE_CLASSIFIER_MODEL"] + str(MODEL_VERSIONS["DOG_BREED_ATTRIBUTE_CLASSIFIER_MODEL"]) + ".h5"),
-    "HUMAN_RACE_ATTRIBUTE_CLASSIFIER_MODEL": Path("AIModels") / (MODEL_NAMES["HUMAN_RACE_ATTRIBUTE_CLASSIFIER_MODEL"] + str(MODEL_VERSIONS["HUMAN_RACE_ATTRIBUTE_CLASSIFIER_MODEL"]) + ".h5"),
-    "CHARACTER_TYPE_ATTRIBUTE_CLASSIFIER_MODEL": Path("AIModels") / (MODEL_NAMES["CHARACTER_TYPE_ATTRIBUTE_CLASSIFIER_MODEL"] + str(MODEL_VERSIONS["CHARACTER_TYPE_ATTRIBUTE_CLASSIFIER_MODEL"]) + ".h5"),
+    "MAIN_CLASSIFIER_MODEL": Path("backend/AIModels") / (MODEL_NAMES["MAIN_CLASSIFIER_MODEL"] + str(MODEL_VERSIONS["MAIN_CLASSIFIER_MODEL"]) + ".h5"),
+    "CAR_MODEL_ATTRIBUTE_CLASSIFIER_MODEL": Path("backend/AIModels") / (MODEL_NAMES["CAR_MODEL_ATTRIBUTE_CLASSIFIER_MODEL"] + str(MODEL_VERSIONS["CAR_MODEL_ATTRIBUTE_CLASSIFIER_MODEL"]) + ".h5"),
+    "CAT_BREED_ATTRIBUTE_CLASSIFIER_MODEL": Path("backend/AIModels") / (MODEL_NAMES["CAT_BREED_ATTRIBUTE_CLASSIFIER_MODEL"] + str(MODEL_VERSIONS["CAT_BREED_ATTRIBUTE_CLASSIFIER_MODEL"]) + ".h5"),
+    "DOG_BREED_ATTRIBUTE_CLASSIFIER_MODEL": Path("backend/AIModels") / (MODEL_NAMES["DOG_BREED_ATTRIBUTE_CLASSIFIER_MODEL"] + str(MODEL_VERSIONS["DOG_BREED_ATTRIBUTE_CLASSIFIER_MODEL"]) + ".h5"),
+    "HUMAN_RACE_ATTRIBUTE_CLASSIFIER_MODEL": Path("backend/AIModels") / (MODEL_NAMES["HUMAN_RACE_ATTRIBUTE_CLASSIFIER_MODEL"] + str(MODEL_VERSIONS["HUMAN_RACE_ATTRIBUTE_CLASSIFIER_MODEL"]) + ".h5"),
+    "CHARACTER_TYPE_ATTRIBUTE_CLASSIFIER_MODEL": Path("backend/AIModels") / (MODEL_NAMES["CHARACTER_TYPE_ATTRIBUTE_CLASSIFIER_MODEL"] + str(MODEL_VERSIONS["CHARACTER_TYPE_ATTRIBUTE_CLASSIFIER_MODEL"]) + ".h5"),
 }
 
 #==================================================
