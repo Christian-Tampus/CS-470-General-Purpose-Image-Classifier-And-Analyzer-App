@@ -1,17 +1,24 @@
-# Ignore Python cache
+# Ignore Python bytecode and caches
 __pycache__/
-*.py[cod]
+*.pyc
+*.pyo
 
-# Ignore virtual environments (if any)
+# Ignore environment variables / virtual environments
+.env
 venv/
 env/
 
-# OS files
-.DS_Store
+# Ignore models if you don't want to push large files (optional)
+backend/AIModels/*.h5
 
-# Logs
+# Ignore logs
 *.log
 
-# IDE/editor settings
-*.vscode/
-*.idea/
+# Ignore OS files
+.DS_Store
+Thumbs.db
+
+# Ignore Python egg / build files
+*.egg-info/
+dist/
+build/
