@@ -1,4 +1,4 @@
-#UPDATE VERSION [11]
+#UPDATE VERSION [12]
 
 #==================================================
 #Class: CS-470 Artificial Intelligence
@@ -50,7 +50,7 @@ app.add_middleware(
     allow_methods = ["*"],
     allow_headers = ["*"],
 )
-app.mount("/static", StaticFiles(directory = "../frontend"), name = "static")
+app.mount("/static", StaticFiles(directory = "frontend"), name = "static")
 
 #==================================================
 #Model Names
@@ -133,7 +133,7 @@ def preprocessImage(image, imageSize):
 #==================================================
 @app.get("/")
 async def read_index():
-    return FileResponse("../frontend/index.html")
+    return FileResponse("frontend/index.html")
 
 @app.post("/predict")
 async def predict(file: UploadFile = File(...)):
