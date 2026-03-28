@@ -1,4 +1,4 @@
-#UPDATE VERSION [10]
+#UPDATE VERSION [11]
 
 #==================================================
 #Class: CS-470 Artificial Intelligence
@@ -35,6 +35,9 @@ from fastapi import FastAPI, File, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from tensorflow.keras.applications.efficientnet import preprocess_input
 from sklearn.metrics import confusion_matrix, accuracy_score, classification_report
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
+from fastapi import Request
 
 #==================================================
 #Application
@@ -47,6 +50,7 @@ app.add_middleware(
     allow_methods = ["*"],
     allow_headers = ["*"],
 )
+app.mount("/static", StaticFiles(directory = "../frontend"), name = "static")
 
 #==================================================
 #Model Names
@@ -125,8 +129,12 @@ def preprocessImage(image, imageSize):
     return image
 
 #==================================================
-#Server Prediction API
+#Server APIs
 #==================================================
+@app.get("/")
+async def read_index():
+    return FileResponse("../frontend/index.html")
+
 @app.post("/predict")
 async def predict(file: UploadFile = File(...)):
     print("[SERVER] Request Recieved From Client!")
