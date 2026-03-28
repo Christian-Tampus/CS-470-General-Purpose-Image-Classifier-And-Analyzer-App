@@ -8,9 +8,6 @@ __pycache__/
 venv/
 env/
 
-# Ignore models if you don't want to push large files (optional)
-backend/AIModels/*.h5
-
 # Ignore logs
 *.log
 
