@@ -23,17 +23,11 @@ import json
 import argparse
 import numpy as np
 import tensorflow as tf
-print("===========WORKING HERE 1============")
 from PIL import Image
-print("===========WORKING HERE 2============")
 from pathlib import Path
-print("===========WORKING HERE 3============")
 from tensorflow.keras import backend as tf_backend
-print("===========WORKING HERE 4============")
 from tensorflow.keras.models import load_model
-print("===========WORKING HERE 5============")
 from tensorflow.keras.applications.efficientnet import preprocess_input
-print("===========WORKING HERE 6============")
 
 print("[SERVER] Predictor.py Dependencies Imported!")
 
@@ -119,6 +113,7 @@ def preprocessImage(imagePath, imageSize):
 #Main Function
 #==================================================
 def main(imagePath):
+    print("[SERVER] [predictor.py] Subprocess main(imagePath) Start!")
     imageArray = preprocessImage(imagePath, MODEL_IMAGE_SIZE["MAIN_CLASSIFIER_MODEL"])
     MAIN_CLASSIFIER_MODEL = load_model(MODEL_DIRECTORY["MAIN_CLASSIFIER_MODEL"])
     classPrediction = MAIN_CLASSIFIER_MODEL.predict(imageArray)[0]
@@ -169,14 +164,14 @@ def main(imagePath):
             attributeType = "Character Type"
             predictedAttribute = CHARACTER_TYPE_ATTRIBUTES[attributePredictionIndex]
             predictedAttributeConfidence = float(attributePrediction[attributePredictionIndex])
-    print(json.dumps({
+    print("[SERVER] Result: ",json.dumps({
         "Class": predictedClass,
         "Class Confidence": predictedClassConfidence,
         "Attribute Type": attributeType,
         "Attribute Value": predictedAttribute,
         "Attribute Confidence": predictedAttributeConfidence
     }))
-    print("[SERVER] Return Request To Client!")
+    print("[SERVER] [predictor.py] Subprocess main(imagePath) Return!")
     return {
         "Class": predictedClass,
         "Class Confidence": predictedClassConfidence,
