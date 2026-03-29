@@ -1,4 +1,4 @@
-#UPDATE VERSION [26]
+#UPDATE VERSION [27]
 
 #==================================================
 #Class: CS-470 Artificial Intelligence
@@ -18,6 +18,8 @@ print("[SERVER] Predictor.py Program Start!")
 #==================================================
 print("[SERVER] Predictor.py Importing Dependencies...")
 
+import os
+os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3" #Prevent TensorFlow Spamming stdout
 import gc
 import json
 import argparse
@@ -113,7 +115,6 @@ def preprocessImage(imagePath, imageSize):
 #Main Function
 #==================================================
 def main(imagePath):
-    print("[SERVER] [predictor.py] Subprocess main(imagePath) Start!")
     imageArray = preprocessImage(imagePath, MODEL_IMAGE_SIZE["MAIN_CLASSIFIER_MODEL"])
     MAIN_CLASSIFIER_MODEL = load_model(MODEL_DIRECTORY["MAIN_CLASSIFIER_MODEL"])
     classPrediction = MAIN_CLASSIFIER_MODEL.predict(imageArray)[0]
@@ -171,14 +172,6 @@ def main(imagePath):
         "Attribute Value": predictedAttribute,
         "Attribute Confidence": predictedAttributeConfidence
     }))
-    print("[SERVER] [predictor.py] Subprocess main(imagePath) Start!")
-    return {
-        "Class": predictedClass,
-        "Class Confidence": predictedClassConfidence,
-        "Attribute Type": attributeType,
-        "Attribute Value": predictedAttribute,
-        "Attribute Confidence": predictedAttributeConfidence
-    }
 
 #==================================================
 #Script Starter

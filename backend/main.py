@@ -1,4 +1,4 @@
-#UPDATE VERSION [26]
+#UPDATE VERSION [27]
 
 #==================================================
 #Website Link: https://cs-470-ai-project-app-3c0cc8276da9.herokuapp.com/
@@ -32,6 +32,7 @@ print("[SERVER] Importing Dependencies...")
 import io
 import os
 import gc
+import json
 import uvicorn
 import tempfile
 import subprocess
@@ -99,8 +100,10 @@ async def predict(file: UploadFile = File(...)):
 
     #Return Prediction JSON From Worker stdout
     print("[SERVER] [main.py] Return Request To Client!")
-    print("[SERVER] [main.py] workerProcessResult.stdout: ", workerProcessResult.stdout)
-    return JSONResponse(content = workerProcessResult.stdout)
+    print("[SERVER] [main.py] Raw stdout: ", repr(workerProcessResult.stdout))
+    JSON_RESPONSE_CONTENT_DATA = json.loads(workerProcessResult.stdout)
+    print("[SERVER] [main.py] JSON_RESPONSE_CONTENT_DATA: ", JSON_RESPONSE_CONTENT_DATA)
+    return JSONResponse(content = JSON_RESPONSE_CONTENT_DATA)
 
     #fileContents = await file.read()
     #image = Image.open(io.BytesIO(fileContents)).convert("RGB")
