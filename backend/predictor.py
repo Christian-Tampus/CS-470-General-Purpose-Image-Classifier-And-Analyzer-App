@@ -166,7 +166,7 @@ def main(imagePath):
         "Attribute Type": attributeType,
         "Attribute Value": predictedAttribute,
         "Attribute Confidence": predictedAttributeConfidence
-    }))
+    }), flush = True)
 
 #==================================================
 #Script Starter

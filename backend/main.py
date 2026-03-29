@@ -89,10 +89,18 @@ async def predict(file: UploadFile = File(...)):
     #Run A Separate Worker Process For Prediction (Execute predictor.py)
     print("[SERVER] [main.py] Run A Separate Worker Process For Prediction (Execute predictor.py)!")
     workerProcessResult = subprocess.run(
-        ["python", "backend/predictor.py", "--image", temp_path],
+        ["python3", "backend/predictor.py", "--image", temp_path],
         capture_output = True,
         text = True,
+        check = True,
     )
+
+    #For Debugging The JSON
+    print("[SERVER] [main.py] Raw stdout: ", repr(workerProcessResult.stdout))
+
+    if workerProcessResult.returncode != 0:
+        print("[SERVER] [main.py] stderr: ", workerProcessResult.stderr)
+        raise RuntimeError("[SERVER] [main.py] predictor.py Subprocess Failed!")
 
     #Remove Temporary File
     print("[SERVER] [main.py] Remove Temporary File!")
@@ -100,7 +108,6 @@ async def predict(file: UploadFile = File(...)):
 
     #Return Prediction JSON From Worker stdout
     print("[SERVER] [main.py] Return Request To Client!")
-    #print("[SERVER] [main.py] Raw stdout: ", repr(workerProcessResult.stdout))
     JSON_RESPONSE_CONTENT_DATA = json.loads(workerProcessResult.stdout)
     print("[SERVER] [main.py] JSON_RESPONSE_CONTENT_DATA: ", JSON_RESPONSE_CONTENT_DATA)
     return JSONResponse(content = JSON_RESPONSE_CONTENT_DATA)
