@@ -35,7 +35,7 @@ print("[SERVER] Importing Dependencies...")
 import io
 import os
 import uvicorn
-#import numpy as np
+import numpy as np
 #from PIL import Image
 #import tensorflow as tf
 from pathlib import Path
