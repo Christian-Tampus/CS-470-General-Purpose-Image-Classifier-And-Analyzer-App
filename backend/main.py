@@ -84,21 +84,21 @@ async def predict(file: UploadFile = File(...)):
     temp_file_path = Path(f"/tempFile/{file.filename}")
     with temp_file_path.open("wb") as FILE:
         FILE.write(await FILE.read())
-    try:
-        #Run A Separate Worker Process For Prediction (Execute predictor.py)
-        print("[SERVER] [main.py] Run A Separate Worker Process For Prediction (Execute predictor.py)!")
-        workerProcessResult = subprocess.run(
-            ["python3", "predict.py", str(temp_file_path)], #Command & Args
-            capture_output = True, #Captures stdout (Standard Output) & stderr (Standard Error)
-            text = True, #Returns String Instead Of Bytes
-            check = True, #Raises CalledProcessError If Exit Code != 0
-        )
-    finally:
-        #Remove Temporary File
-        print("[SERVER] [main.py] Remove Temporary File!")
-        if temp_file_path.exists():
-            temp_file_path.unlink()
+    
+    #Run A Separate Worker Process For Prediction (Execute predictor.py)
+    print("[SERVER] [main.py] Run A Separate Worker Process For Prediction (Execute predictor.py)!")
+    workerProcessResult = subprocess.run(
+        ["python3", "predict.py", str(temp_file_path)], #Command & Args
+        capture_output = True, #Captures stdout (Standard Output) & stderr (Standard Error)
+        text = True, #Returns String Instead Of Bytes
+        check = True, #Raises CalledProcessError If Exit Code != 0
+    )
 
+    #Remove Temporary File
+    print("[SERVER] [main.py] Remove Temporary File!")
+    if temp_file_path.exists():
+        temp_file_path.unlink()
+    
     #Return Prediction JSON From Worker stdout
     print("[SERVER] [main.py] Return Request To Client!")
     print("[SERVER] [main.py] workerProcessResult.stdout: ", workerProcessResult.stdout)
