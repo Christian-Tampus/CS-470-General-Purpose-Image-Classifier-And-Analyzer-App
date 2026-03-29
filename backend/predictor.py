@@ -23,6 +23,7 @@ import json
 import argparse
 import numpy as np
 import tensorflow as tf
+print("===========WORKING HERE============")
 from PIL import Image
 from pathlib import Path
 from tensorflow import backend as tf_backend
