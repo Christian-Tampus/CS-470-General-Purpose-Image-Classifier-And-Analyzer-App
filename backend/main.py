@@ -40,14 +40,20 @@ FRONTEND_DIRECTORY = Path(__file__).parent.parent / "frontend"
 #Application
 #==================================================
 app = FastAPI()
-
-# Serve frontend folder as /static
-app.mount("/static", StaticFiles(directory = FRONTEND_DIR), name="static")
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins = ["*"], #Allow All Origins (Good For localhost Testing)
+    allow_credentials = True,
+    allow_methods = ["*"],
+    allow_headers = ["*"],
+)
+#Important: Server frontend Folder as /static
+app.mount("/static", StaticFiles(directory = FRONTEND_DIRECTORY), name = "static")
 
 # Root route serves index.html
 @app.get("/")
 async def root():
-    return FileResponse(FRONTEND_DIR / "index.html")
+    return FileResponse(FRONTEND_DIRECTORY / "index.html")
 
 #==================================================
 #Server Starter
