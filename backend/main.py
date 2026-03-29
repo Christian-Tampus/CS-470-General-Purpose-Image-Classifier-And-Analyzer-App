@@ -27,24 +27,24 @@ print("[SERVER] Importing Dependencies...")
 
 #fastapi==0.129.0
 #uvicorn==0.41.0
+#python-multipart==0.0.7
 #numpy==1.26.4
 #pillow==12.1.1
 #tensorflow-cpu==2.20.0
-#python-multipart==0.0.7
 
 import io
 import os
 import uvicorn
 import numpy as np
 from PIL import Image
-#import tensorflow as tf
+import tensorflow as tf
 from pathlib import Path
 from fastapi import FastAPI
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi import FastAPI, File, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
-#from tensorflow.keras.applications.efficientnet import preprocess_input
+from tensorflow.keras.applications.efficientnet import preprocess_input
 print("[SERVER] Dependencies Imported, pillow & numpy is added!")
 
 #==================================================
