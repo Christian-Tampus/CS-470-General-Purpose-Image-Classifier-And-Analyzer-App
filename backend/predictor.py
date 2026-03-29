@@ -120,6 +120,7 @@ def preprocessImage(imagePath, imageSize):
 #==================================================
 def downloadModel(modelPath: Path, googleDriveUrl: str):
     if not modelPath.exists():
+        modelPath.parent.mkdir(parents = True, exist_ok = True) #Create AIModels Folder If Missing
         gdown.download(googleDriveUrl, str(modelPath), quiet = False)
 
 #==================================================
