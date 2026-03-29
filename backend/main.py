@@ -1,4 +1,28 @@
-# main.py (BARE MINIMUM for deployment with static files)
+#UPDATE VERSION [18]
+
+#==================================================
+#Class: CS-470 Artificial Intelligence
+#Professor: Amit Das
+#Name: Christian Tampus
+#Description: General Purpose Image Classifier & Analyzer
+#Assignment: Semester Project
+#==================================================
+
+#==================================================
+#IMPORTANT NOTES
+#==================================================
+#Run Backend Server: uvicorn main:app --reload
+#Server Runs At: http://127.0.0.1:8000
+#Test EndPoint: http://127.0.0.1:8000/docs
+
+#==================================================
+#Start Program
+#==================================================
+print("[SERVER] Main.py Program Start!")
+
+#==================================================
+#Import Dependencies
+#==================================================
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
@@ -19,8 +43,15 @@ app.mount("/static", StaticFiles(directory = FRONTEND_DIR), name="static")
 async def root():
     return FileResponse(FRONTEND_DIR / "index.html")
 
-# Heroku requires dynamic port, use uvicorn to run:
-# uvicorn backend.main:app --host 0.0.0.0 --port $PORT
+#==================================================
+#Server Starter
+#==================================================
+#Important: Heroku Requires Dynamic Port, Use uvicorn To Run: uvicorn backend.main:app --host 0.0.0.0 --port $PORT
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 8000))
-    uvicorn.run("backend.main:app", host="0.0.0.0", port = port, reload = True)
+    serverPort = int(os.environ.get("PORT", 8000))
+    uvicorn.run("backend.main:app", host = "0.0.0.0", port = serverPort, reload = True)
+
+#==================================================
+#Terminate Program
+#==================================================
+print("[SERVER] Main.py Program Terminated...")
