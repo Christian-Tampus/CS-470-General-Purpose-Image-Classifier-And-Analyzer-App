@@ -23,6 +23,11 @@ print("[SERVER] Main.py Program Start!")
 #==================================================
 #Import Dependencies
 #==================================================
+
+#numpy==1.26.4
+#pillow==12.1.1
+#tensorflow-cpu==2.20.0
+
 import io
 import os
 import uvicorn
