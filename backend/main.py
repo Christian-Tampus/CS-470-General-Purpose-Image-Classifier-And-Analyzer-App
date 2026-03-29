@@ -36,7 +36,7 @@ import io
 import os
 import uvicorn
 import numpy as np
-#from PIL import Image
+from PIL import Image
 #import tensorflow as tf
 from pathlib import Path
 from fastapi import FastAPI
@@ -45,7 +45,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi import FastAPI, File, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 #from tensorflow.keras.applications.efficientnet import preprocess_input
-print("[SERVER] Dependencies Imported!")
+print("[SERVER] Dependencies Imported, pillow & numpy is added!")
 
 #==================================================
 #Global Variables
