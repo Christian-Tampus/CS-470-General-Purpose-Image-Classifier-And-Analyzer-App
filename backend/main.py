@@ -55,7 +55,9 @@ app.add_middleware(
 #Important: Server frontend Folder as /static
 app.mount("/static", StaticFiles(directory = FRONTEND_DIRECTORY), name = "static")
 
-# Root route serves index.html
+#==================================================
+#Server APIs
+#==================================================
 @app.get("/")
 async def root():
     return FileResponse(FRONTEND_DIRECTORY / "index.html")
