@@ -26,9 +26,9 @@ print("[SERVER] Main.py Program Start!")
 import io
 import os
 import uvicorn
-import numpy as np
+#import numpy as np
 #import tensorflow as tf
-from PIL import Image
+#from PIL import Image
 from pathlib import Path
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
