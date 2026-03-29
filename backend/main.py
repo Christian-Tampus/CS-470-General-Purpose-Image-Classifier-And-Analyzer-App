@@ -1,4 +1,4 @@
-#UPDATE VERSION [23]
+#UPDATE VERSION [24]
 
 #==================================================
 #Website Link: https://cs-470-ai-project-app-3c0cc8276da9.herokuapp.com/
@@ -123,6 +123,16 @@ MODEL_DIRECTORY = {
 }
 
 #==================================================
+#Load Models
+#==================================================
+MAIN_CLASSIFIER_MODEL = tf.keras.models.load_model(MODEL_DIRECTORY["MAIN_CLASSIFIER_MODEL"])
+CAR_MODEL_ATTRIBUTE_CLASSIFIER_MODEL = tf.keras.models.load_model(MODEL_DIRECTORY["CAR_MODEL_ATTRIBUTE_CLASSIFIER_MODEL"])
+CAT_BREED_ATTRIBUTE_CLASSIFIER_MODEL = tf.keras.models.load_model(MODEL_DIRECTORY["CAT_BREED_ATTRIBUTE_CLASSIFIER_MODEL"])
+DOG_BREED_ATTRIBUTE_CLASSIFIER_MODEL = tf.keras.models.load_model(MODEL_DIRECTORY["DOG_BREED_ATTRIBUTE_CLASSIFIER_MODEL"])
+HUMAN_RACE_ATTRIBUTE_CLASSIFIER_MODEL = tf.keras.models.load_model(MODEL_DIRECTORY["HUMAN_RACE_ATTRIBUTE_CLASSIFIER_MODEL"])
+CHARACTER_TYPE_ATTRIBUTE_CLASSIFIER_MODEL = tf.keras.models.load_model(MODEL_DIRECTORY["CHARACTER_TYPE_ATTRIBUTE_CLASSIFIER_MODEL"])
+
+#==================================================
 #Preprocess Image Function
 #==================================================
 def preprocessImage(image, imageSize):
@@ -143,9 +153,6 @@ async def root():
 @app.post("/predict")
 async def predict(file: UploadFile = File(...)):
     print("[SERVER] Request Recieved From Client!")
-    print("[SERVER] Loading MAIN_CLASSIFIER_MODEL...")
-    MAIN_CLASSIFIER_MODEL = tf.keras.models.load_model(MODEL_DIRECTORY["MAIN_CLASSIFIER_MODEL"])
-    print("[SERVER] MAIN_CLASSIFIER_MODEL Loaded!")
     fileContents = await file.read()
     image = Image.open(io.BytesIO(fileContents)).convert("RGB")
     imageArray = preprocessImage(image, MODEL_IMAGE_SIZE["MAIN_CLASSIFIER_MODEL"])
@@ -155,9 +162,6 @@ async def predict(file: UploadFile = File(...)):
     predictedClassConfidence = float(classPrediction[classPredictionIndex])
     match predictedClass:
         case "Car":
-            print("[SERVER] Loading CAR_MODEL_ATTRIBUTE_CLASSIFIER_MODEL...")
-            CAR_MODEL_ATTRIBUTE_CLASSIFIER_MODEL = tf.keras.models.load_model(MODEL_DIRECTORY["CAR_MODEL_ATTRIBUTE_CLASSIFIER_MODEL"])
-            print("[SERVER] CAR_MODEL_ATTRIBUTE_CLASSIFIER_MODEL Loaded!")
             imageArray = preprocessImage(image, MODEL_IMAGE_SIZE["CAR_MODEL_ATTRIBUTE_CLASSIFIER_MODEL"])
             attributePrediction = CAR_MODEL_ATTRIBUTE_CLASSIFIER_MODEL.predict(imageArray)[0]
             attributePredictionIndex = np.argmax(attributePrediction)
@@ -166,9 +170,6 @@ async def predict(file: UploadFile = File(...)):
             print("[SERVER] Return Request To Client!")
             return {"Class": predictedClass, "Class Confidence": predictedClassConfidence, "Attribute Type": "Car Model", "Attribute Value": predictedAttribute, "Attribute Confidence": predictedAttributeConfidence}
         case "Cat":
-            print("[SERVER] Loading CAT_BREED_ATTRIBUTE_CLASSIFIER_MODEL...")
-            CAT_BREED_ATTRIBUTE_CLASSIFIER_MODEL = tf.keras.models.load_model(MODEL_DIRECTORY["CAT_BREED_ATTRIBUTE_CLASSIFIER_MODEL"])
-            print("[SERVER] CAT_BREED_ATTRIBUTE_CLASSIFIER_MODEL Loaded!")
             imageArray = preprocessImage(image, MODEL_IMAGE_SIZE["CAT_BREED_ATTRIBUTE_CLASSIFIER_MODEL"])
             attributePrediction = CAT_BREED_ATTRIBUTE_CLASSIFIER_MODEL.predict(imageArray)[0]
             attributePredictionIndex = np.argmax(attributePrediction)
@@ -177,9 +178,6 @@ async def predict(file: UploadFile = File(...)):
             print("[SERVER] Return Request To Client!")
             return {"Class": predictedClass, "Class Confidence": predictedClassConfidence, "Attribute Type": "Cat Breed", "Attribute Value": predictedAttribute, "Attribute Confidence": predictedAttributeConfidence}
         case "Dog":
-            print("[SERVER] Loading DOG_BREED_ATTRIBUTE_CLASSIFIER_MODEL...")
-            DOG_BREED_ATTRIBUTE_CLASSIFIER_MODEL = tf.keras.models.load_model(MODEL_DIRECTORY["DOG_BREED_ATTRIBUTE_CLASSIFIER_MODEL"])
-            print("[SERVER] DOG_BREED_ATTRIBUTE_CLASSIFIER_MODEL Loaded!")
             imageArray = preprocessImage(image, MODEL_IMAGE_SIZE["DOG_BREED_ATTRIBUTE_CLASSIFIER_MODEL"])
             attributePrediction = DOG_BREED_ATTRIBUTE_CLASSIFIER_MODEL.predict(imageArray)[0]
             attributePredictionIndex = np.argmax(attributePrediction)
@@ -188,9 +186,6 @@ async def predict(file: UploadFile = File(...)):
             print("[SERVER] Return Request To Client!")
             return {"Class": predictedClass, "Class Confidence": predictedClassConfidence, "Attribute Type": "Dog Breed", "Attribute Value": predictedAttribute, "Attribute Confidence": predictedAttributeConfidence}
         case "Human":
-            print("[SERVER] Loading HUMAN_RACE_ATTRIBUTE_CLASSIFIER_MODEL...")
-            HUMAN_RACE_ATTRIBUTE_CLASSIFIER_MODEL = tf.keras.models.load_model(MODEL_DIRECTORY["HUMAN_RACE_ATTRIBUTE_CLASSIFIER_MODEL"])
-            print("[SERVER] HUMAN_RACE_ATTRIBUTE_CLASSIFIER_MODEL Loaded!")
             imageArray = preprocessImage(image, MODEL_IMAGE_SIZE["HUMAN_RACE_ATTRIBUTE_CLASSIFIER_MODEL"])
             attributePrediction = HUMAN_RACE_ATTRIBUTE_CLASSIFIER_MODEL.predict(imageArray)[0]
             attributePredictionIndex = np.argmax(attributePrediction)
@@ -199,9 +194,6 @@ async def predict(file: UploadFile = File(...)):
             print("[SERVER] Return Request To Client!")
             return {"Class": predictedClass, "Class Confidence": predictedClassConfidence, "Attribute Type": "Human Race", "Attribute Value": predictedAttribute, "Attribute Confidence": predictedAttributeConfidence}
         case "Character":
-            print("[SERVER] Loading CHARACTER_TYPE_ATTRIBUTE_CLASSIFIER_MODEL...")
-            CHARACTER_TYPE_ATTRIBUTE_CLASSIFIER_MODEL = tf.keras.models.load_model(MODEL_DIRECTORY["CHARACTER_TYPE_ATTRIBUTE_CLASSIFIER_MODEL"])
-            print("[SERVER] CHARACTER_TYPE_ATTRIBUTE_CLASSIFIER_MODEL Loaded!")
             imageArray = preprocessImage(image, MODEL_IMAGE_SIZE["CHARACTER_TYPE_ATTRIBUTE_CLASSIFIER_MODEL"])
             attributePrediction = CHARACTER_TYPE_ATTRIBUTE_CLASSIFIER_MODEL.predict(imageArray)[0]
             attributePredictionIndex = np.argmax(attributePrediction)
@@ -222,7 +214,7 @@ if __name__ == "__main__":
 #==================================================
 #Update Message
 #==================================================
-print("[SERVER] Updates: Updated predict() Function In An Attempt To Reduce Memory.")
+print("[SERVER] Updates: Moved Models To Load Outside predict() Function")
 
 #==================================================
 #Terminate Program
