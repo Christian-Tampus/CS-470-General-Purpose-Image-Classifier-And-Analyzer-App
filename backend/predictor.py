@@ -1,4 +1,4 @@
-#UPDATE VERSION [31]
+#UPDATE VERSION [32]
 
 #==================================================
 #Class: CS-470 Artificial Intelligence
@@ -92,6 +92,22 @@ MODEL_DIRECTORY = {
 }
 
 #==================================================
+#AIModel Google Drive URL
+#==================================================
+#Url Must Be: https://drive.google.com/uc?id=FILE_ID
+#Click Share > Click Copy Link > Example Link: https://drive.google.com/file/d/1CZuOVz1IlRh0Fy9JJ3ZZMZ6RzN1izYzt/view?usp=drive_link
+#FILE_ID From Example Link: 1QD-VPbrukO4C_fBnPxbN0lWdPdvnzwif
+#Url Example: https://drive.google.com/uc?id=1QD-VPbrukO4C_fBnPxbN0lWdPdvnzwif
+MODEL_GOOGLE_DRIVE_URL = {
+    "MAIN_CLASSIFIER_MODEL": "https://drive.google.com/uc?id=1CZuOVz1IlRh0Fy9JJ3ZZMZ6RzN1izYzt",
+    "CAR_MODEL_ATTRIBUTE_CLASSIFIER_MODEL": "https://drive.google.com/uc?id=1QD-VPbrukO4C_fBnPxbN0lWdPdvnzwif",
+    "CAT_BREED_ATTRIBUTE_CLASSIFIER_MODEL": "https://drive.google.com/uc?id=1bpmt-IrAyFanHpzpSCd3bjNH5lN5fcUz",
+    "DOG_BREED_ATTRIBUTE_CLASSIFIER_MODEL": "https://drive.google.com/uc?id=18EL3n-8YRlcntQ3YsMpCt7AANcpdXHIc",
+    "HUMAN_RACE_ATTRIBUTE_CLASSIFIER_MODEL": "https://drive.google.com/uc?id=1YQK1m-E1Kr6W8gMkPux1qkPnfJJPY2o2",
+    "CHARACTER_TYPE_ATTRIBUTE_CLASSIFIER_MODEL": "https://drive.google.com/uc?id=1pNMeNlF4lU8q6JqfXIixdCeIRNeTdxXt",
+}
+
+#==================================================
 #Preprocess Image Function
 #==================================================
 def preprocessImage(imagePath, imageSize):
@@ -102,12 +118,22 @@ def preprocessImage(imagePath, imageSize):
 #==================================================
 #Download Model From Google Drive
 #==================================================
+def downloadModel(modelPath: Path, googleDriveUrl: str):
+    if not modelPath.exists():
+        print(f"[SERVER] {modelPath.name} Was Not Found Locally, Downloading From Google Drive...")
+        gdown.download(googleDriveUrl, str(modelPath), quiet = False)
+        print(f"[SERVER] {modelPath.name} Downloaded Successfully!")
+    else:
+        print(f"[SERVER] {modelPath.name} Already Exists Locally!")
 
 #==================================================
 #Main Function
 #==================================================
 def main(imagePath):
     imageArray = preprocessImage(imagePath, MODEL_IMAGE_SIZE["MAIN_CLASSIFIER_MODEL"])
+    modelPath = MODEL_DIRECTORY["MAIN_CLASSIFIER_MODEL"]
+    googleDriveUrl = MODEL_GOOGLE_DRIVE_URL["MAIN_CLASSIFIER_MODEL"]
+    downloadModel(modelPath, googleDriveUrl)
     MAIN_CLASSIFIER_MODEL = load_model(MODEL_DIRECTORY["MAIN_CLASSIFIER_MODEL"])
     classPrediction = MAIN_CLASSIFIER_MODEL.predict(imageArray, verbose = 0)[0]
     classPredictionIndex = int(np.argmax(classPrediction))
@@ -119,6 +145,9 @@ def main(imagePath):
     match predictedClass:
         case "Car":
             imageArray = preprocessImage(imagePath, MODEL_IMAGE_SIZE["CAR_MODEL_ATTRIBUTE_CLASSIFIER_MODEL"])
+            modelPath = MODEL_DIRECTORY["CAR_MODEL_ATTRIBUTE_CLASSIFIER_MODEL"]
+            googleDriveUrl = MODEL_GOOGLE_DRIVE_URL["CAR_MODEL_ATTRIBUTE_CLASSIFIER_MODEL"]
+            downloadModel(modelPath, googleDriveUrl)
             CAR_MODEL_ATTRIBUTE_CLASSIFIER_MODEL = load_model(MODEL_DIRECTORY["CAR_MODEL_ATTRIBUTE_CLASSIFIER_MODEL"])
             attributePrediction = CAR_MODEL_ATTRIBUTE_CLASSIFIER_MODEL.predict(imageArray, verbose = 0)[0]
             attributePredictionIndex = int(np.argmax(attributePrediction))
@@ -127,6 +156,9 @@ def main(imagePath):
             predictedAttributeConfidence = float(attributePrediction[attributePredictionIndex])
         case "Cat":
             imageArray = preprocessImage(imagePath, MODEL_IMAGE_SIZE["CAT_BREED_ATTRIBUTE_CLASSIFIER_MODEL"])
+            modelPath = MODEL_DIRECTORY["CAT_BREED_ATTRIBUTE_CLASSIFIER_MODEL"]
+            googleDriveUrl = MODEL_GOOGLE_DRIVE_URL["CAT_BREED_ATTRIBUTE_CLASSIFIER_MODEL"]
+            downloadModel(modelPath, googleDriveUrl)
             CAT_BREED_ATTRIBUTE_CLASSIFIER_MODEL = load_model(MODEL_DIRECTORY["CAT_BREED_ATTRIBUTE_CLASSIFIER_MODEL"])
             attributePrediction = CAT_BREED_ATTRIBUTE_CLASSIFIER_MODEL.predict(imageArray, verbose = 0)[0]
             attributePredictionIndex = int(np.argmax(attributePrediction))
@@ -135,6 +167,9 @@ def main(imagePath):
             predictedAttributeConfidence = float(attributePrediction[attributePredictionIndex])
         case "Dog":
             imageArray = preprocessImage(imagePath, MODEL_IMAGE_SIZE["DOG_BREED_ATTRIBUTE_CLASSIFIER_MODEL"])
+            modelPath = MODEL_DIRECTORY["DOG_BREED_ATTRIBUTE_CLASSIFIER_MODEL"]
+            googleDriveUrl = MODEL_GOOGLE_DRIVE_URL["DOG_BREED_ATTRIBUTE_CLASSIFIER_MODEL"]
+            downloadModel(modelPath, googleDriveUrl)
             DOG_BREED_ATTRIBUTE_CLASSIFIER_MODEL = load_model(MODEL_DIRECTORY["DOG_BREED_ATTRIBUTE_CLASSIFIER_MODEL"])
             attributePrediction = DOG_BREED_ATTRIBUTE_CLASSIFIER_MODEL.predict(imageArray, verbose = 0)[0]
             attributePredictionIndex = int(np.argmax(attributePrediction))
@@ -143,6 +178,9 @@ def main(imagePath):
             predictedAttributeConfidence = float(attributePrediction[attributePredictionIndex])
         case "Human":
             imageArray = preprocessImage(imagePath, MODEL_IMAGE_SIZE["HUMAN_RACE_ATTRIBUTE_CLASSIFIER_MODEL"])
+            modelPath = MODEL_DIRECTORY["HUMAN_RACE_ATTRIBUTE_CLASSIFIER_MODEL"]
+            googleDriveUrl = MODEL_GOOGLE_DRIVE_URL["HUMAN_RACE_ATTRIBUTE_CLASSIFIER_MODEL"]
+            downloadModel(modelPath, googleDriveUrl)
             HUMAN_RACE_ATTRIBUTE_CLASSIFIER_MODEL = load_model(MODEL_DIRECTORY["HUMAN_RACE_ATTRIBUTE_CLASSIFIER_MODEL"])
             attributePrediction = HUMAN_RACE_ATTRIBUTE_CLASSIFIER_MODEL.predict(imageArray, verbose = 0)[0]
             attributePredictionIndex = int(np.argmax(attributePrediction))
@@ -151,6 +189,9 @@ def main(imagePath):
             predictedAttributeConfidence = float(attributePrediction[attributePredictionIndex])
         case "Character":
             imageArray = preprocessImage(imagePath, MODEL_IMAGE_SIZE["CHARACTER_TYPE_ATTRIBUTE_CLASSIFIER_MODEL"])
+            modelPath = MODEL_DIRECTORY["CHARACTER_TYPE_ATTRIBUTE_CLASSIFIER_MODEL"]
+            googleDriveUrl = MODEL_GOOGLE_DRIVE_URL["CHARACTER_TYPE_ATTRIBUTE_CLASSIFIER_MODEL"]
+            downloadModel(modelPath, googleDriveUrl)
             CHARACTER_TYPE_ATTRIBUTE_CLASSIFIER_MODEL = load_model(MODEL_DIRECTORY["CHARACTER_TYPE_ATTRIBUTE_CLASSIFIER_MODEL"])
             attributePrediction = CHARACTER_TYPE_ATTRIBUTE_CLASSIFIER_MODEL.predict(imageArray, verbose = 0)[0]
             attributePredictionIndex = int(np.argmax(attributePrediction))
