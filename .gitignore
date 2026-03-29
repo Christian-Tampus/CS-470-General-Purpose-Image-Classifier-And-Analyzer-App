@@ -1,7 +1,8 @@
-__pycache__/
-*.py[cod]
-
-OLD_MAIN_PY.txt
-OLD_PREDICTOR_PY.txt
-
-AIModels/*.h5
+#.gitignore Paths Are Relative To The Location Of The .gitignore File.
+Ignore __pycache__ And Its Contents Inside The Folder
+backend/__pycache__/
+#Ignore OLD_MAIN_PY.txt & OLD_PREDICTOR_PY.txt
+backend/OLD_MAIN_PY.txt
+backend/OLD_PREDICTOR_PY.txt
+#Ignore All Files Inside AIModels But Keep The Folder Itself
+backend/AIModels/*.h5
