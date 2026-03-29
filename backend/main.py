@@ -1,4 +1,4 @@
-#UPDATE VERSION [17]
+#UPDATE VERSION [18]
 
 #==================================================
 #Class: CS-470 Artificial Intelligence
@@ -27,14 +27,14 @@ import io
 import os
 import uvicorn
 import numpy as np
-import tensorflow as tf
+#import tensorflow as tf
 from PIL import Image
 from pathlib import Path
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi import FastAPI, File, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
-from tensorflow.keras.applications.efficientnet import preprocess_input
+#from tensorflow.keras.applications.efficientnet import preprocess_input
 
 #==================================================
 #Global Variables
