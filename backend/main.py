@@ -70,6 +70,12 @@ app.mount("/static", StaticFiles(directory = FRONTEND_DIRECTORY), name = "static
 async def root():
     return FileResponse(FRONTEND_DIRECTORY / "index.html")
 
+@app.post("/predict")
+async def predict(file: UploadFile = File(...)):
+    print("[SERVER] Request Recieved From Client!")
+    print("[SERVER] Return Request To Client!")
+    return {"Class": "Unknown", "Class Confidence": 0, "Attribute": "Unknown", "Attribute Confidence": 0}
+
 #==================================================
 #Server Starter
 #==================================================
