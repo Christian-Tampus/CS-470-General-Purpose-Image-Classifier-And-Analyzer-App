@@ -19,6 +19,7 @@ import os
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3" #Prevent TensorFlow Spamming stdout
 import gc
 import json
+import gdown #If Using Google Drive: pip install gdown
 import argparse
 import numpy as np
 import tensorflow as tf
@@ -93,18 +94,14 @@ MODEL_DIRECTORY = {
 #==================================================
 #Preprocess Image Function
 #==================================================
-#def preprocessImage(image, imageSize):
-    #image = image.resize((imageSize, imageSize))
-    #image = np.array(image, dtype = np.float32)
-    #image = preprocess_input(image)
-    #image = np.expand_dims(image, axis = 0)
-    #print("[SERVER] Image Processed!")
-    #return image
-
 def preprocessImage(imagePath, imageSize):
     image = Image.open(imagePath).convert("RGB").resize((imageSize, imageSize))
     imageArray = np.array(image)[np.newaxis, ...] #Add Batch Dimension
     return preprocess_input(imageArray)
+
+#==================================================
+#Download Model From Google Drive
+#==================================================
 
 #==================================================
 #Main Function

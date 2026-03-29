@@ -3,3 +3,5 @@ __pycache__/
 
 OLD_MAIN_PY.txt
 OLD_PREDICTOR_PY.txt
+
+AIModels/*.h5
