@@ -30,10 +30,16 @@ from pathlib import Path
 import os
 import uvicorn
 
-app = FastAPI()
+#==================================================
+#Global Variables
+#==================================================
+#Important: Path To frondend Folder
+FRONTEND_DIRECTORY = Path(__file__).parent.parent / "frontend"
 
-# Path to frontend folder
-FRONTEND_DIR = Path(__file__).parent.parent / "frontend"
+#==================================================
+#Application
+#==================================================
+app = FastAPI()
 
 # Serve frontend folder as /static
 app.mount("/static", StaticFiles(directory = FRONTEND_DIR), name="static")
