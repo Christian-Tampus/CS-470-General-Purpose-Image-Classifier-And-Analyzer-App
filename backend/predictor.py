@@ -1,4 +1,4 @@
-#UPDATE VERSION [28]
+#UPDATE VERSION [29]
 
 #==================================================
 #Class: CS-470 Artificial Intelligence
@@ -9,15 +9,12 @@
 #==================================================
 
 #==================================================
-#Start Program
+#Program Start
 #==================================================
-print("[SERVER] Predictor.py Program Start!")
 
 #==================================================
 #Import Dependencies
 #==================================================
-print("[SERVER] Predictor.py Importing Dependencies...")
-
 import os
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3" #Prevent TensorFlow Spamming stdout
 import gc
@@ -30,8 +27,6 @@ from pathlib import Path
 from tensorflow.keras import backend as tf_backend
 from tensorflow.keras.models import load_model
 from tensorflow.keras.applications.efficientnet import preprocess_input
-
-print("[SERVER] Predictor.py Dependencies Imported!")
 
 #==================================================
 #Global Variables
@@ -187,6 +182,5 @@ if __name__ == "__main__":
     gc.collect()
 
 #==================================================
-#Terminate Program
+#Program End
 #==================================================
-print("[SERVER] Predictor.py Program Terminated...")

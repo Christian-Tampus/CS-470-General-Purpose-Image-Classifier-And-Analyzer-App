@@ -1,4 +1,4 @@
-### UPDATE VERSION [28]
+### UPDATE VERSION [29]
 # CS-470 General Purpose Image Classifier And Analyzer App
 ## REMEMBER TO ADD A READ ME!
 # TO DO LIST:
