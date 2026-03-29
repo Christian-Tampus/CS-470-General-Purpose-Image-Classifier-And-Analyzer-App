@@ -28,7 +28,7 @@ from PIL import Image
 print("===========WORKING HERE 2============")
 from pathlib import Path
 print("===========WORKING HERE 3============")
-from tensorflow import backend as tf_backend
+from tensorflow.keras import backend as tf_backend
 print("===========WORKING HERE 4============")
 from tensorflow.keras.models import load_model
 print("===========WORKING HERE 5============")
