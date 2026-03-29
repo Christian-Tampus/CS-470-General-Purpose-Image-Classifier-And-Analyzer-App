@@ -1,4 +1,4 @@
-#UPDATE VERSION [28]
+#UPDATE VERSION [30]
 
 #==================================================
 #Website Link: https://cs-470-ai-project-app-3c0cc8276da9.herokuapp.com/
@@ -107,9 +107,7 @@ async def predict(file: UploadFile = File(...)):
     Path(temp_path).unlink()
 
     #Return Prediction JSON From Worker stdout
-    print("[SERVER] [main.py] JSON_RESPONSE_CONTENT_DATA BEFORE!")
     JSON_RESPONSE_CONTENT_DATA = json.loads(workerProcessResult.stdout)
-    print("[SERVER] [main.py] JSON_RESPONSE_CONTENT_DATA AFTER!")
     print("[SERVER] [main.py] JSON_RESPONSE_CONTENT_DATA: ", JSON_RESPONSE_CONTENT_DATA)
     print("[SERVER] [main.py] Return Request To Client!")
     return JSONResponse(content = JSON_RESPONSE_CONTENT_DATA)

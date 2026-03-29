@@ -1,0 +1,5 @@
+__pycache__/
+*.py[cod]
+
+OLD_MAIN_PY.txt
+OLD_PREDICTOR_PY.txt
