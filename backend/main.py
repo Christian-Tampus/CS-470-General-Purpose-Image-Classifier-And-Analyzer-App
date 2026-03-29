@@ -107,9 +107,11 @@ async def predict(file: UploadFile = File(...)):
     Path(temp_path).unlink()
 
     #Return Prediction JSON From Worker stdout
-    print("[SERVER] [main.py] Return Request To Client!")
+    print("[SERVER] [main.py] JSON_RESPONSE_CONTENT_DATA BEFORE!")
     JSON_RESPONSE_CONTENT_DATA = json.loads(workerProcessResult.stdout)
+    print("[SERVER] [main.py] JSON_RESPONSE_CONTENT_DATA AFTER!")
     print("[SERVER] [main.py] JSON_RESPONSE_CONTENT_DATA: ", JSON_RESPONSE_CONTENT_DATA)
+    print("[SERVER] [main.py] Return Request To Client!")
     return JSONResponse(content = JSON_RESPONSE_CONTENT_DATA)
 
     #fileContents = await file.read()

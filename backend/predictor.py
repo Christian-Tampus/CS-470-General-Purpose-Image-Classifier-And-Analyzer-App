@@ -112,7 +112,7 @@ def preprocessImage(imagePath, imageSize):
 def main(imagePath):
     imageArray = preprocessImage(imagePath, MODEL_IMAGE_SIZE["MAIN_CLASSIFIER_MODEL"])
     MAIN_CLASSIFIER_MODEL = load_model(MODEL_DIRECTORY["MAIN_CLASSIFIER_MODEL"])
-    classPrediction = MAIN_CLASSIFIER_MODEL.predict(imageArray)[0]
+    classPrediction = MAIN_CLASSIFIER_MODEL.predict(imageArray, verbose = 0)[0]
     classPredictionIndex = int(np.argmax(classPrediction))
     predictedClass = CLASS_NAMES[classPredictionIndex]
     predictedClassConfidence = float(classPrediction[classPredictionIndex])
@@ -123,7 +123,7 @@ def main(imagePath):
         case "Car":
             imageArray = preprocessImage(imagePath, MODEL_IMAGE_SIZE["CAR_MODEL_ATTRIBUTE_CLASSIFIER_MODEL"])
             CAR_MODEL_ATTRIBUTE_CLASSIFIER_MODEL = load_model(MODEL_DIRECTORY["CAR_MODEL_ATTRIBUTE_CLASSIFIER_MODEL"])
-            attributePrediction = CAR_MODEL_ATTRIBUTE_CLASSIFIER_MODEL.predict(imageArray)[0]
+            attributePrediction = CAR_MODEL_ATTRIBUTE_CLASSIFIER_MODEL.predict(imageArray, verbose = 0)[0]
             attributePredictionIndex = int(np.argmax(attributePrediction))
             attributeType = "Car Model"
             predictedAttribute = CAR_MODEL_ATTRIBUTES[attributePredictionIndex]
@@ -131,7 +131,7 @@ def main(imagePath):
         case "Cat":
             imageArray = preprocessImage(imagePath, MODEL_IMAGE_SIZE["CAT_BREED_ATTRIBUTE_CLASSIFIER_MODEL"])
             CAT_BREED_ATTRIBUTE_CLASSIFIER_MODEL = load_model(MODEL_DIRECTORY["CAT_BREED_ATTRIBUTE_CLASSIFIER_MODEL"])
-            attributePrediction = CAT_BREED_ATTRIBUTE_CLASSIFIER_MODEL.predict(imageArray)[0]
+            attributePrediction = CAT_BREED_ATTRIBUTE_CLASSIFIER_MODEL.predict(imageArray, verbose = 0)[0]
             attributePredictionIndex = int(np.argmax(attributePrediction))
             attributeType = "Cat Breed"
             predictedAttribute = CAT_BREED_ATTRIBUTES[attributePredictionIndex]
@@ -139,7 +139,7 @@ def main(imagePath):
         case "Dog":
             imageArray = preprocessImage(imagePath, MODEL_IMAGE_SIZE["DOG_BREED_ATTRIBUTE_CLASSIFIER_MODEL"])
             DOG_BREED_ATTRIBUTE_CLASSIFIER_MODEL = load_model(MODEL_DIRECTORY["DOG_BREED_ATTRIBUTE_CLASSIFIER_MODEL"])
-            attributePrediction = DOG_BREED_ATTRIBUTE_CLASSIFIER_MODEL.predict(imageArray)[0]
+            attributePrediction = DOG_BREED_ATTRIBUTE_CLASSIFIER_MODEL.predict(imageArray, verbose = 0)[0]
             attributePredictionIndex = int(np.argmax(attributePrediction))
             attributeType = "Dog Breed"
             predictedAttribute = DOG_BREED_ATTRIBUTES[attributePredictionIndex]
@@ -147,7 +147,7 @@ def main(imagePath):
         case "Human":
             imageArray = preprocessImage(imagePath, MODEL_IMAGE_SIZE["HUMAN_RACE_ATTRIBUTE_CLASSIFIER_MODEL"])
             HUMAN_RACE_ATTRIBUTE_CLASSIFIER_MODEL = load_model(MODEL_DIRECTORY["HUMAN_RACE_ATTRIBUTE_CLASSIFIER_MODEL"])
-            attributePrediction = HUMAN_RACE_ATTRIBUTE_CLASSIFIER_MODEL.predict(imageArray)[0]
+            attributePrediction = HUMAN_RACE_ATTRIBUTE_CLASSIFIER_MODEL.predict(imageArray, verbose = 0)[0]
             attributePredictionIndex = int(np.argmax(attributePrediction))
             attributeType = "Human Race"
             predictedAttribute = HUMAN_RACE_ATTRIBUTES[attributePredictionIndex]
@@ -155,7 +155,7 @@ def main(imagePath):
         case "Character":
             imageArray = preprocessImage(imagePath, MODEL_IMAGE_SIZE["CHARACTER_TYPE_ATTRIBUTE_CLASSIFIER_MODEL"])
             CHARACTER_TYPE_ATTRIBUTE_CLASSIFIER_MODEL = load_model(MODEL_DIRECTORY["CHARACTER_TYPE_ATTRIBUTE_CLASSIFIER_MODEL"])
-            attributePrediction = CHARACTER_TYPE_ATTRIBUTE_CLASSIFIER_MODEL.predict(imageArray)[0]
+            attributePrediction = CHARACTER_TYPE_ATTRIBUTE_CLASSIFIER_MODEL.predict(imageArray, verbose = 0)[0]
             attributePredictionIndex = int(np.argmax(attributePrediction))
             attributeType = "Character Type"
             predictedAttribute = CHARACTER_TYPE_ATTRIBUTES[attributePredictionIndex]
