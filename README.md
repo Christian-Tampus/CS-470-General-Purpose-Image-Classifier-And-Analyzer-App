@@ -1,6 +1,6 @@
 ### UPDATE VERSION [36]
 # CS-470 General Purpose Image Classifier And Analyzer App
-## REMEMBER TO ADD A READ ME!
+## REMEMBER TO ADD README INFORMATION ABOUT THIS PROJECT!
 # Progress:
 ### 1. [COMPLETED] Deploy App
 ### 2. [_] Update index.html To Display All The Class Types & Attributes It Supports
