@@ -96,6 +96,7 @@ async def predict(file: UploadFile = File(...)):
 
     #Return Prediction JSON From Worker stdout
     print("[SERVER] Return Request To Client!")
+    print(workerProcessResult.stdout)
     return JSONResponse(content = workerProcessResult.stdout)
 
     #fileContents = await file.read()
