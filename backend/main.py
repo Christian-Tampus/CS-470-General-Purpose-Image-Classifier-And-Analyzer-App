@@ -1,4 +1,4 @@
-#UPDATE VERSION [33]
+#UPDATE VERSION [34]
 
 #==================================================
 #Website Link: https://cs-470-ai-project-app-3c0cc8276da9.herokuapp.com/
@@ -110,6 +110,7 @@ async def predict(file: UploadFile = File(...)):
     JSON_RESPONSE_CONTENT_DATA = json.loads(workerProcessResult.stdout)
     print("[SERVER] [main.py] JSON_RESPONSE_CONTENT_DATA: ", JSON_RESPONSE_CONTENT_DATA)
     print("[SERVER] [main.py] Return Request To Client!")
+    print("[SERVER] [main.py] IMPORTANT! IF YOU GET AN ERROR, THERE SHOULD BE NO print() Statements Inside predictor.py!")
     return JSONResponse(content = JSON_RESPONSE_CONTENT_DATA)
 
 #==================================================

@@ -1,4 +1,4 @@
-#UPDATE VERSION [33]
+#UPDATE VERSION [34]
 
 #==================================================
 #Class: CS-470 Artificial Intelligence
@@ -120,11 +120,7 @@ def preprocessImage(imagePath, imageSize):
 #==================================================
 def downloadModel(modelPath: Path, googleDriveUrl: str):
     if not modelPath.exists():
-        print(f"[SERVER] {modelPath.name} Was Not Found Locally, Downloading From Google Drive...")
         gdown.download(googleDriveUrl, str(modelPath), quiet = False)
-        print(f"[SERVER] {modelPath.name} Downloaded Successfully!")
-    else:
-        print(f"[SERVER] {modelPath.name} Already Exists Locally!")
 
 #==================================================
 #Main Function
