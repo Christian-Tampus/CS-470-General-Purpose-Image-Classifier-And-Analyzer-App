@@ -1,4 +1,4 @@
-#UPDATE VERSION [20]
+#UPDATE VERSION [21]
 
 #==================================================
 #Class: CS-470 Artificial Intelligence
@@ -125,6 +125,17 @@ MODEL_DIRECTORY = {
 }
 
 #==================================================
+#Preprocess Image Function
+#==================================================
+def preprocessImage(image, imageSize):
+    image = image.resize((imageSize, imageSize))
+    image = np.array(image, dtype = np.float32)
+    image = preprocess_input(image)
+    image = np.expand_dims(image, axis = 0)
+    print("[SERVER] Image Processed!")
+    return image
+
+#==================================================
 #Server APIs
 #==================================================
 @app.get("/")
@@ -148,7 +159,7 @@ if __name__ == "__main__":
 #==================================================
 #Update Message
 #==================================================
-print("[SERVER] Updates: Added More Variables.")
+print("[SERVER] Updates: Added preprocessImage() Function.")
 
 #==================================================
 #Terminate Program
