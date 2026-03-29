@@ -23,12 +23,17 @@ import json
 import argparse
 import numpy as np
 import tensorflow as tf
-print("===========WORKING HERE============")
+print("===========WORKING HERE 1============")
 from PIL import Image
+print("===========WORKING HERE 2============")
 from pathlib import Path
+print("===========WORKING HERE 3============")
 from tensorflow import backend as tf_backend
+print("===========WORKING HERE 4============")
 from tensorflow.keras.models import load_model
+print("===========WORKING HERE 5============")
 from tensorflow.keras.applications.efficientnet import preprocess_input
+print("===========WORKING HERE 6============")
 
 print("[SERVER] Predictor.py Dependencies Imported!")
 
