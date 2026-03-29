@@ -1,22 +1,26 @@
-# main.py (BARE MINIMUM for deployment)
+# main.py (BARE MINIMUM for deployment with static files)
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
+from pathlib import Path
 import os
+import uvicorn
 
 app = FastAPI()
 
-# Serve frontend folder as static
-app.mount("/frontend", StaticFiles(directory="frontend"), name="frontend")
+# Path to frontend folder
+FRONTEND_DIR = Path(__file__).parent.parent / "frontend"
+
+# Serve frontend folder as /static
+app.mount("/static", StaticFiles(directory = FRONTEND_DIR), name="static")
 
 # Root route serves index.html
 @app.get("/")
 async def root():
-    return FileResponse("frontend/index.html")
+    return FileResponse(FRONTEND_DIR / "index.html")
 
 # Heroku requires dynamic port, use uvicorn to run:
-# uvicorn main:app --host 0.0.0.0 --port $PORT
+# uvicorn backend.main:app --host 0.0.0.0 --port $PORT
 if __name__ == "__main__":
-    import uvicorn
     port = int(os.environ.get("PORT", 8000))
-    uvicorn.run("main:app", host="0.0.0.0", port=port, reload=True)
+    uvicorn.run("backend.main:app", host="0.0.0.0", port = port, reload = True)

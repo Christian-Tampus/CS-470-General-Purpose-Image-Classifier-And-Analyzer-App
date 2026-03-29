@@ -1,4 +1,4 @@
-<!--UPDATE VERSION [15]-->
+<!--UPDATE VERSION [16]-->
 
 <!--
 #==================================================
@@ -14,7 +14,8 @@
 <html>
     <head>
         <title>General Purpose Image Classifier & Analyser</title>
-        <link rel = "stylesheet" href = "./styles.css">
+        <!-- href = "./styles.css" -->
+        <link rel = "stylesheet" href = "/static/styles.css">
     </head>
     <body>
         <div id = "mainContainer">
@@ -23,13 +24,15 @@
                 <h2 id = "author" class = "text-style">Developed By: Christian Tampus</h2>
             </div>
             <div id = "predictor-div">
-                <img id = "imageToPredict" src = "./images/placeholder.jpg" alt = "Image To Predict">
+                <!-- src = "./images/placeholder.jpg" -->
+                <img id = "imageToPredict" src = "/static/images/placeholder.jpg" alt = "Image To Predict">
                 <input type = "file" id = "imageInput" style = "display:none">
                 <label for = "imageInput" id = "imageInputLabel" class = "text-style button-style">Choose Image</label>
                 <button id = "predictButton" onclick = "predict()" class = "text-style button-style">Predict Image</button>
                 <h3 id = "result" class = "text-style">Class: Unknown, Class Confidence: 0.00%, Attribute Type: Unknown, Attribute Value: Unknown, Attribute Confidence: 0.00%</h3>
             </div>
         </div>
-        <script src = "./script.js"></script>
+        <!-- src = "./script.js" -->
+        <script src = "/static/script.js"></script>
     </body>
 </html>
