@@ -1,4 +1,4 @@
-/*UPDATE VERSION [22]*/
+/*UPDATE VERSION [23]*/
 
 /*
 #==================================================
@@ -67,11 +67,9 @@ async function predict()
         body: formData,
     });
     let data = await response.json();
-    setTimeout(() => {
-        let resultString = "Class: " + data.Class + "\nClass Confidence: " + (data["Class Confidence"] * 100).toFixed(2) + "%\n" + " Attribute Type: " + data["Attribute Type"] + "\nAttribute Value: " + data["Attribute Value"] + "\nAttribute Confidence: " + (data["Attribute Confidence"] * 100).toFixed(2) + "%";
-        result.innerText = resultString;
-        console.log("[CLIENT] Prediction Recieved From Server!");
-    }, 3000);
+    let resultString = "Class: " + data.Class + "\nClass Confidence: " + (data["Class Confidence"] * 100).toFixed(2) + "%\n" + " Attribute Type: " + data["Attribute Type"] + "\nAttribute Value: " + data["Attribute Value"] + "\nAttribute Confidence: " + (data["Attribute Confidence"] * 100).toFixed(2) + "%";
+    result.innerText = resultString;
+    console.log("[CLIENT] Prediction Recieved From Server!");
 };
 
 /*
