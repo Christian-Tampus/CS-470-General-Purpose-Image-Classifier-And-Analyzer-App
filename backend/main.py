@@ -1,4 +1,4 @@
-#UPDATE VERSION [21]
+#UPDATE VERSION [22]
 
 #==================================================
 #Class: CS-470 Artificial Intelligence
@@ -145,7 +145,84 @@ async def root():
 @app.post("/predict")
 async def predict(file: UploadFile = File(...)):
     print("[SERVER] Request Recieved From Client!")
-    print("[SERVER] Return Request To Client!")
+    global MAIN_CLASSIFIER_MODEL
+    global CAR_MODEL_ATTRIBUTE_CLASSIFIER_MODEL
+    global CAT_BREED_ATTRIBUTE_CLASSIFIER_MODEL
+    global DOG_BREED_ATTRIBUTE_CLASSIFIER_MODEL
+    global HUMAN_RACE_ATTRIBUTE_CLASSIFIER_MODEL
+    global CHARACTER_TYPE_ATTRIBUTE_CLASSIFIER_MODEL
+    if MAIN_CLASSIFIER_MODEL is None:
+        print("[SERVER] Loading MAIN_CLASSIFIER_MODEL...")
+        MAIN_CLASSIFIER_MODEL = tf.keras.models.load_model(MODEL_DIRECTORY["MAIN_CLASSIFIER_MODEL"])
+        print("[SERVER] MAIN_CLASSIFIER_MODEL Loaded!")
+    fileContents = await file.read()
+    image = Image.open(io.BytesIO(fileContents)).convert("RGB")
+    imageArray = preprocessImage(image, MODEL_IMAGE_SIZE["MAIN_CLASSIFIER_MODEL"])
+    classPrediction = MAIN_CLASSIFIER_MODEL.predict(imageArray)[0]
+    classPredictionIndex = np.argmax(classPrediction)
+    predictedClass = CLASS_NAMES[classPredictionIndex]
+    predictedClassConfidence = float(classPrediction[classPredictionIndex])
+    match predictedClass:
+        case "Car":
+            if CAR_MODEL_ATTRIBUTE_CLASSIFIER_MODEL is None:
+                print("[SERVER] Loading CAR_MODEL_ATTRIBUTE_CLASSIFIER_MODEL...")
+                CAR_MODEL_ATTRIBUTE_CLASSIFIER_MODEL = tf.keras.models.load_model(MODEL_DIRECTORY["CAR_MODEL_ATTRIBUTE_CLASSIFIER_MODEL"])
+                print("[SERVER] CAR_MODEL_ATTRIBUTE_CLASSIFIER_MODEL Loaded!")
+            imageArray = preprocessImage(image, MODEL_IMAGE_SIZE["CAR_MODEL_ATTRIBUTE_CLASSIFIER_MODEL"])
+            attributePrediction = CAR_MODEL_ATTRIBUTE_CLASSIFIER_MODEL.predict(imageArray)[0]
+            attributePredictionIndex = np.argmax(attributePrediction)
+            predictedAttribute = CAR_MODEL_ATTRIBUTES[attributePredictionIndex]
+            predictedAttributeConfidence = float(attributePrediction[attributePredictionIndex])
+            print("[SERVER] Return Request To Client!")
+            return {"Class": predictedClass, "Class Confidence": predictedClassConfidence, "Attribute Type": "Car Model", "Attribute Value": predictedAttribute, "Attribute Confidence": predictedAttributeConfidence}
+        case "Cat":
+            if CAT_BREED_ATTRIBUTE_CLASSIFIER_MODEL is None:
+                print("[SERVER] Loading CAT_BREED_ATTRIBUTE_CLASSIFIER_MODEL...")
+                CAT_BREED_ATTRIBUTE_CLASSIFIER_MODEL = tf.keras.models.load_model(MODEL_DIRECTORY["CAT_BREED_ATTRIBUTE_CLASSIFIER_MODEL"])
+                print("[SERVER] CAT_BREED_ATTRIBUTE_CLASSIFIER_MODEL Loaded!")
+            imageArray = preprocessImage(image, MODEL_IMAGE_SIZE["CAT_BREED_ATTRIBUTE_CLASSIFIER_MODEL"])
+            attributePrediction = CAT_BREED_ATTRIBUTE_CLASSIFIER_MODEL.predict(imageArray)[0]
+            attributePredictionIndex = np.argmax(attributePrediction)
+            predictedAttribute = CAT_BREED_ATTRIBUTES[attributePredictionIndex]
+            predictedAttributeConfidence = float(attributePrediction[attributePredictionIndex])
+            print("[SERVER] Return Request To Client!")
+            return {"Class": predictedClass, "Class Confidence": predictedClassConfidence, "Attribute Type": "Cat Breed", "Attribute Value": predictedAttribute, "Attribute Confidence": predictedAttributeConfidence}
+        case "Dog":
+            if DOG_BREED_ATTRIBUTE_CLASSIFIER_MODEL is None:
+                print("[SERVER] Loading DOG_BREED_ATTRIBUTE_CLASSIFIER_MODEL...")
+                DOG_BREED_ATTRIBUTE_CLASSIFIER_MODEL = tf.keras.models.load_model(MODEL_DIRECTORY["DOG_BREED_ATTRIBUTE_CLASSIFIER_MODEL"])
+                print("[SERVER] DOG_BREED_ATTRIBUTE_CLASSIFIER_MODEL Loaded!")
+            imageArray = preprocessImage(image, MODEL_IMAGE_SIZE["DOG_BREED_ATTRIBUTE_CLASSIFIER_MODEL"])
+            attributePrediction = DOG_BREED_ATTRIBUTE_CLASSIFIER_MODEL.predict(imageArray)[0]
+            attributePredictionIndex = np.argmax(attributePrediction)
+            predictedAttribute = DOG_BREED_ATTRIBUTES[attributePredictionIndex]
+            predictedAttributeConfidence = float(attributePrediction[attributePredictionIndex])
+            print("[SERVER] Return Request To Client!")
+            return {"Class": predictedClass, "Class Confidence": predictedClassConfidence, "Attribute Type": "Dog Breed", "Attribute Value": predictedAttribute, "Attribute Confidence": predictedAttributeConfidence}
+        case "Human":
+            if HUMAN_RACE_ATTRIBUTE_CLASSIFIER_MODEL is None:
+                print("[SERVER] Loading HUMAN_RACE_ATTRIBUTE_CLASSIFIER_MODEL...")
+                HUMAN_RACE_ATTRIBUTE_CLASSIFIER_MODEL = tf.keras.models.load_model(MODEL_DIRECTORY["HUMAN_RACE_ATTRIBUTE_CLASSIFIER_MODEL"])
+                print("[SERVER] HUMAN_RACE_ATTRIBUTE_CLASSIFIER_MODEL Loaded!")
+            imageArray = preprocessImage(image, MODEL_IMAGE_SIZE["HUMAN_RACE_ATTRIBUTE_CLASSIFIER_MODEL"])
+            attributePrediction = HUMAN_RACE_ATTRIBUTE_CLASSIFIER_MODEL.predict(imageArray)[0]
+            attributePredictionIndex = np.argmax(attributePrediction)
+            predictedAttribute = HUMAN_RACE_ATTRIBUTES[attributePredictionIndex]
+            predictedAttributeConfidence = float(attributePrediction[attributePredictionIndex])
+            print("[SERVER] Return Request To Client!")
+            return {"Class": predictedClass, "Class Confidence": predictedClassConfidence, "Attribute Type": "Human Race", "Attribute Value": predictedAttribute, "Attribute Confidence": predictedAttributeConfidence}
+        case "Character":
+            if CHARACTER_TYPE_ATTRIBUTE_CLASSIFIER_MODEL is None:
+                print("[SERVER] Loading CHARACTER_TYPE_ATTRIBUTE_CLASSIFIER_MODEL...")
+                CHARACTER_TYPE_ATTRIBUTE_CLASSIFIER_MODEL = tf.keras.models.load_model(MODEL_DIRECTORY["CHARACTER_TYPE_ATTRIBUTE_CLASSIFIER_MODEL"])
+                print("[SERVER] CHARACTER_TYPE_ATTRIBUTE_CLASSIFIER_MODEL Loaded!")
+            imageArray = preprocessImage(image, MODEL_IMAGE_SIZE["CHARACTER_TYPE_ATTRIBUTE_CLASSIFIER_MODEL"])
+            attributePrediction = CHARACTER_TYPE_ATTRIBUTE_CLASSIFIER_MODEL.predict(imageArray)[0]
+            attributePredictionIndex = np.argmax(attributePrediction)
+            predictedAttribute = CHARACTER_TYPE_ATTRIBUTES[attributePredictionIndex]
+            predictedAttributeConfidence = float(attributePrediction[attributePredictionIndex])
+            print("[SERVER] Return Request To Client!")
+            return {"Class": predictedClass, "Class Confidence": predictedClassConfidence, "Attribute Type": "Character Type", "Attribute Value": predictedAttribute, "Attribute Confidence": predictedAttributeConfidence}
     return {"Class": "Unknown", "Class Confidence": 0, "Attribute": "Unknown", "Attribute Confidence": 0}
 
 #==================================================
@@ -159,7 +236,7 @@ if __name__ == "__main__":
 #==================================================
 #Update Message
 #==================================================
-print("[SERVER] Updates: Added preprocessImage() Function.")
+print("[SERVER] Updates: Updated predict() Function.")
 
 #==================================================
 #Terminate Program
