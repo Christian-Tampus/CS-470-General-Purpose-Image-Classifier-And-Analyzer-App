@@ -23,7 +23,7 @@ print("[SERVER] Main.py Program Start!")
 #==================================================
 #Import Dependencies
 #==================================================
-
+print("[SERVER] Importing Dependencies...")
 #numpy==1.26.4
 #pillow==12.1.1
 #tensorflow-cpu==2.20.0
@@ -41,6 +41,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi import FastAPI, File, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 #from tensorflow.keras.applications.efficientnet import preprocess_input
+print("[SERVER] Dependencies Imported!")
 
 #==================================================
 #Global Variables
