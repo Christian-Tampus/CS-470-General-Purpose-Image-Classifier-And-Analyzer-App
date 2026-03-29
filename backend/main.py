@@ -1,4 +1,4 @@
-#UPDATE VERSION [30]
+#UPDATE VERSION [31]
 
 #==================================================
 #Website Link: https://cs-470-ai-project-app-3c0cc8276da9.herokuapp.com/
@@ -111,62 +111,6 @@ async def predict(file: UploadFile = File(...)):
     print("[SERVER] [main.py] JSON_RESPONSE_CONTENT_DATA: ", JSON_RESPONSE_CONTENT_DATA)
     print("[SERVER] [main.py] Return Request To Client!")
     return JSONResponse(content = JSON_RESPONSE_CONTENT_DATA)
-
-    #fileContents = await file.read()
-    #image = Image.open(io.BytesIO(fileContents)).convert("RGB")
-    #imageArray = preprocessImage(image, MODEL_IMAGE_SIZE["MAIN_CLASSIFIER_MODEL"])
-    #MAIN_CLASSIFIER_MODEL = tf.keras.models.load_model(MODEL_DIRECTORY["MAIN_CLASSIFIER_MODEL"])
-    #classPrediction = MAIN_CLASSIFIER_MODEL.predict(imageArray)[0]
-    #classPredictionIndex = np.argmax(classPrediction)
-    #predictedClass = CLASS_NAMES[classPredictionIndex]
-    #predictedClassConfidence = float(classPrediction[classPredictionIndex])
-    #match predictedClass:
-        #case "Car":
-            #imageArray = preprocessImage(image, MODEL_IMAGE_SIZE["CAR_MODEL_ATTRIBUTE_CLASSIFIER_MODEL"])
-            #CAR_MODEL_ATTRIBUTE_CLASSIFIER_MODEL = tf.keras.models.load_model(MODEL_DIRECTORY["CAR_MODEL_ATTRIBUTE_CLASSIFIER_MODEL"])
-            #attributePrediction = CAR_MODEL_ATTRIBUTE_CLASSIFIER_MODEL.predict(imageArray)[0]
-            #attributePredictionIndex = np.argmax(attributePrediction)
-            #predictedAttribute = CAR_MODEL_ATTRIBUTES[attributePredictionIndex]
-            #predictedAttributeConfidence = float(attributePrediction[attributePredictionIndex])
-            #print("[SERVER] Return Request To Client!")
-            #return {"Class": predictedClass, "Class Confidence": predictedClassConfidence, "Attribute Type": "Car Model", "Attribute Value": predictedAttribute, "Attribute Confidence": predictedAttributeConfidence}
-        #case "Cat":
-            #imageArray = preprocessImage(image, MODEL_IMAGE_SIZE["CAT_BREED_ATTRIBUTE_CLASSIFIER_MODEL"])
-            #CAT_BREED_ATTRIBUTE_CLASSIFIER_MODEL = tf.keras.models.load_model(MODEL_DIRECTORY["CAT_BREED_ATTRIBUTE_CLASSIFIER_MODEL"])
-            #attributePrediction = CAT_BREED_ATTRIBUTE_CLASSIFIER_MODEL.predict(imageArray)[0]
-            #attributePredictionIndex = np.argmax(attributePrediction)
-            #predictedAttribute = CAT_BREED_ATTRIBUTES[attributePredictionIndex]
-            #predictedAttributeConfidence = float(attributePrediction[attributePredictionIndex])
-            #print("[SERVER] Return Request To Client!")
-            #return {"Class": predictedClass, "Class Confidence": predictedClassConfidence, "Attribute Type": "Cat Breed", "Attribute Value": predictedAttribute, "Attribute Confidence": predictedAttributeConfidence}
-        #case "Dog":
-            #imageArray = preprocessImage(image, MODEL_IMAGE_SIZE["DOG_BREED_ATTRIBUTE_CLASSIFIER_MODEL"])
-            #DOG_BREED_ATTRIBUTE_CLASSIFIER_MODEL = tf.keras.models.load_model(MODEL_DIRECTORY["DOG_BREED_ATTRIBUTE_CLASSIFIER_MODEL"])
-            #attributePrediction = DOG_BREED_ATTRIBUTE_CLASSIFIER_MODEL.predict(imageArray)[0]
-            #attributePredictionIndex = np.argmax(attributePrediction)
-            #predictedAttribute = DOG_BREED_ATTRIBUTES[attributePredictionIndex]
-            #predictedAttributeConfidence = float(attributePrediction[attributePredictionIndex])
-            #print("[SERVER] Return Request To Client!")
-            #return {"Class": predictedClass, "Class Confidence": predictedClassConfidence, "Attribute Type": "Dog Breed", "Attribute Value": predictedAttribute, "Attribute Confidence": predictedAttributeConfidence}
-        #case "Human":
-            #imageArray = preprocessImage(image, MODEL_IMAGE_SIZE["HUMAN_RACE_ATTRIBUTE_CLASSIFIER_MODEL"])
-            #HUMAN_RACE_ATTRIBUTE_CLASSIFIER_MODEL = tf.keras.models.load_model(MODEL_DIRECTORY["HUMAN_RACE_ATTRIBUTE_CLASSIFIER_MODEL"])
-            #attributePrediction = HUMAN_RACE_ATTRIBUTE_CLASSIFIER_MODEL.predict(imageArray)[0]
-            #attributePredictionIndex = np.argmax(attributePrediction)
-            #predictedAttribute = HUMAN_RACE_ATTRIBUTES[attributePredictionIndex]
-            #predictedAttributeConfidence = float(attributePrediction[attributePredictionIndex])
-            #print("[SERVER] Return Request To Client!")
-            #return {"Class": predictedClass, "Class Confidence": predictedClassConfidence, "Attribute Type": "Human Race", "Attribute Value": predictedAttribute, "Attribute Confidence": predictedAttributeConfidence}
-        #case "Character":
-            #imageArray = preprocessImage(image, MODEL_IMAGE_SIZE["CHARACTER_TYPE_ATTRIBUTE_CLASSIFIER_MODEL"])
-            #CHARACTER_TYPE_ATTRIBUTE_CLASSIFIER_MODEL = tf.keras.models.load_model(MODEL_DIRECTORY["CHARACTER_TYPE_ATTRIBUTE_CLASSIFIER_MODEL"])
-            #attributePrediction = CHARACTER_TYPE_ATTRIBUTE_CLASSIFIER_MODEL.predict(imageArray)[0]
-            #attributePredictionIndex = np.argmax(attributePrediction)
-            #predictedAttribute = CHARACTER_TYPE_ATTRIBUTES[attributePredictionIndex]
-            #predictedAttributeConfidence = float(attributePrediction[attributePredictionIndex])
-            #print("[SERVER] Return Request To Client!")
-            #return {"Class": predictedClass, "Class Confidence": predictedClassConfidence, "Attribute Type": "Character Type", "Attribute Value": predictedAttribute, "Attribute Confidence": predictedAttributeConfidence}
-    #return {"Class": "Unknown", "Class Confidence": 0, "Attribute": "Unknown", "Attribute Confidence": 0}
 
 #==================================================
 #Server Starter
