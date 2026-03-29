@@ -171,7 +171,7 @@ def main(imagePath):
         "Attribute Value": predictedAttribute,
         "Attribute Confidence": predictedAttributeConfidence
     }))
-    print("[SERVER] [predictor.py] Subprocess main(imagePath) Return!")
+    print("[SERVER] [predictor.py] Subprocess main(imagePath) Start!")
     return {
         "Class": predictedClass,
         "Class Confidence": predictedClassConfidence,

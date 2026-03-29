@@ -81,23 +81,22 @@ async def predict(file: UploadFile = File(...)):
     
     #Save Uploaded Image Temporarily
     print("[SERVER] [main.py] Save Uploaded Image Temporarily!")
-    with tempfile.NamedTemporaryFile(delete = False, suffix = ".jpg") as TEMP_FILE:
-        TEMP_FILE.write(await file.read())
-        TEMP_PATH = TEMP_FILE.name
+    with tempfile.NamedTemporaryFile(delete = False, suffix = ".jpg") as temp:
+        temp.write(await file.read())
+        temp_path = temp.name
     
     #Run A Separate Worker Process For Prediction (Execute predictor.py)
     print("[SERVER] [main.py] Run A Separate Worker Process For Prediction (Execute predictor.py)!")
     workerProcessResult = subprocess.run(
-        ["python3", "backend/predict.py", "--image", TEMP_PATH], #Command & Args
-        capture_output = True, #Captures stdout (Standard Output) & stderr (Standard Error)
-        text = True, #Returns String Instead Of Bytes
-        check = True, #Raises CalledProcessError If Exit Code != 0
+        ["python", "backend/predictor.py", "--image", temp_path],
+        capture_output = True,
+        text = True,
     )
 
     #Remove Temporary File
     print("[SERVER] [main.py] Remove Temporary File!")
-    Path(TEMP_PATH).unlink()
-    
+    Path(temp_path).unlink()
+
     #Return Prediction JSON From Worker stdout
     print("[SERVER] [main.py] Return Request To Client!")
     print("[SERVER] [main.py] workerProcessResult.stdout: ", workerProcessResult.stdout)
