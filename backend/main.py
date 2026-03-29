@@ -1,4 +1,4 @@
-#UPDATE VERSION [19]
+#UPDATE VERSION [20]
 
 #==================================================
 #Class: CS-470 Artificial Intelligence
@@ -144,6 +144,11 @@ async def predict(file: UploadFile = File(...)):
 if __name__ == "__main__":
     serverPort = int(os.environ.get("PORT", 8000))
     uvicorn.run("backend.main:app", host = "0.0.0.0", port = serverPort, reload = True)
+
+#==================================================
+#Update Message
+#==================================================
+print("[SERVER] Updates: Added More Variables.")
 
 #==================================================
 #Terminate Program
