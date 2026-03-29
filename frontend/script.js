@@ -1,4 +1,4 @@
-/*UPDATE VERSION [13]*/
+/*UPDATE VERSION [14]*/
 
 /*
 #==================================================
@@ -56,7 +56,7 @@ async function predict()
     let file = document.getElementById("imageInput").files[0];
     let formData = new FormData();
     formData.append("file", file)
-    let response = await fetch("/predict", {
+    let response = await fetch("http://localhost:8000/predict", {
         method: "POST",
         body: formData,
     });
