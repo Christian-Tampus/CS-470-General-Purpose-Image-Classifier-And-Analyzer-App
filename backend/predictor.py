@@ -164,7 +164,7 @@ def main(imagePath):
             attributeType = "Character Type"
             predictedAttribute = CHARACTER_TYPE_ATTRIBUTES[attributePredictionIndex]
             predictedAttributeConfidence = float(attributePrediction[attributePredictionIndex])
-    print("[SERVER] Result: ",json.dumps({
+    print(json.dumps({
         "Class": predictedClass,
         "Class Confidence": predictedClassConfidence,
         "Attribute Type": attributeType,
