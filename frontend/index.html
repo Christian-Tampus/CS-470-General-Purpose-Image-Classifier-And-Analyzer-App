@@ -1,4 +1,4 @@
-<!--UPDATE VERSION [38]-->
+<!--UPDATE VERSION [39]-->
 
 <!--
 #==================================================
@@ -27,7 +27,7 @@
             <div id = "predictor-div">
                 <!-- src = "./images/placeholder.jpg" -->
                 <img id = "imageToPredict" src = "/static/images/placeholder.jpg" alt = "Image To Predict">
-                <input type = "file" id = "imageInput" style = "display:none">
+                <input type = "file" id = "imageInput" style = "display:none" accept = "image/*">
                 <label for = "imageInput" id = "imageInputLabel" class = "text-style button-style">Choose Image</label>
                 <button id = "predictButton" onclick = "predict()" class = "text-style button-style">Predict Image</button>
                 <h3 id = "result" class = "text-style">Class: Unknown, Class Confidence: 0.00%, Attribute Type: Unknown, Attribute Value: Unknown, Attribute Confidence: 0.00%</h3>
