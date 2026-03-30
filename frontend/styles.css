@@ -1,4 +1,4 @@
-/*UPDATE VERSION [40]*/
+/*UPDATE VERSION [41]*/
 
 /*
 #==================================================
@@ -213,9 +213,9 @@ Responsive Web Design: Tablet Screen Size
 }
 
 /*
-Responsive Web Design: Mobile (Phone) Screen Size
+Responsive Web Design: Mobile (Phone) Landscape Screen Size
 */
-@media (max-width: 768px) {
+@media (min-width: 481px) and (max-width: 768px){
     :root {
         --text-shadow:
             1px 1px 0px gray,
@@ -260,5 +260,56 @@ Responsive Web Design: Mobile (Phone) Screen Size
     }
     .class-attribute-li {
         font-size: calc(var(--class-attribute-font) * 0.5);
+    }
+}
+
+/*
+Responsive Web Design: Mobile (Phone) Portrait Screen Size
+*/
+@media (max-width: 480px) {
+    :root {
+        --text-shadow:
+            1px 1px 0px gray,
+            2px 2px 0px black,
+            3px 3px 10px black;
+    }
+    #title-author-div {
+        height: 80px;
+    }
+    #title {
+        font-size: calc(var(--large-font) * 0.4);
+    }
+    #author {
+        font-size: calc(var(--small-font) * 0.4);
+    }
+    #imageToPredict {
+        width: 144px;
+        height: 144px;
+        border: 15px solid rgba(0, 0, 0, 0.5);
+        border-radius: 5px;
+    }
+    .button-style {
+        font-size: calc(var(--button-font) * 1.65);
+    }
+    #result {
+        font-size: calc(var(--prediction-font) * 0.4);
+        width: 300px;
+        margin-bottom: 10px;
+        margin-top: 10px;
+        padding: 5px;
+        border-radius: 5px;
+    }
+    #class-attribute-div {
+        width: 300px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        padding: 5px;
+        border-radius: 5px;
+    }
+    #class-attribute-h3 {
+        font-size: calc(var(--class-attribute-font) * 0.4);
+    }
+    .class-attribute-li {
+        font-size: calc(var(--class-attribute-font) * 0.4);
     }
 }
