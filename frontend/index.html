@@ -1,4 +1,4 @@
-<!--UPDATE VERSION [36]-->
+<!--UPDATE VERSION [37]-->
 
 <!--
 #==================================================
@@ -14,8 +14,9 @@
 <html>
     <head>
         <title>General Purpose Image Classifier & Analyser</title>
-        <!-- href = "./styles.css" -->
-        <link rel = "stylesheet" href = "/static/styles.css">
+        <!-- href = "/static/styles.css" -->
+        <link rel = "stylesheet" href = "./styles.css">
+        <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
     </head>
     <body>
         <div id = "mainContainer">
@@ -24,12 +25,22 @@
                 <h2 id = "author" class = "text-style">Developed By: Christian Tampus</h2>
             </div>
             <div id = "predictor-div">
-                <!-- src = "./images/placeholder.jpg" -->
-                <img id = "imageToPredict" src = "/static/images/placeholder.jpg" alt = "Image To Predict">
+                <!-- src = "/static/images/placeholder.jpg" -->
+                <img id = "imageToPredict" src = "./images/placeholder.jpg" alt = "Image To Predict">
                 <input type = "file" id = "imageInput" style = "display:none">
                 <label for = "imageInput" id = "imageInputLabel" class = "text-style button-style">Choose Image</label>
                 <button id = "predictButton" onclick = "predict()" class = "text-style button-style">Predict Image</button>
                 <h3 id = "result" class = "text-style">Class: Unknown, Class Confidence: 0.00%, Attribute Type: Unknown, Attribute Value: Unknown, Attribute Confidence: 0.00%</h3>
+            </div>
+            <div id = "class-attribute-div">
+                <h3 id = "class-attribute-h3" class = "text-style">Supported Classes & Attributes</h3>
+                <ul id = "class-attribute-ul">
+                    <li class = "class-attribute-li text-style">Class: Cat | Attribute: Cat Breed</li>
+                    <li class = "class-attribute-li text-style">Class: Dog | Attribute: Dog Breed</li>
+                    <li class = "class-attribute-li text-style">Class: Car | Attribute: Car Model</li>
+                    <li class = "class-attribute-li text-style">Class: Human | Attribute: Human Race</li>
+                    <li class = "class-attribute-li text-style">Class: Character | Attribute: Character Type</li>
+                </ul>
             </div>
         </div>
         <!-- src = "./script.js" -->

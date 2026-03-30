@@ -1,4 +1,4 @@
-/*UPDATE VERSION [36]*/
+/*UPDATE VERSION [37]*/
 
 /*
 #==================================================
@@ -11,10 +11,11 @@
 */
 
 :root {
-    --large-font: 60px;
-    --small-font: 40px;
+    --large-font: 40px;
+    --small-font: 30px;
     --button-font: 20px;
     --prediction-font: 30px;
+    --class-attribute-font: 30px;
     --text-color: white;
     --text-shadow:
         1px 1px 0px gray,
@@ -22,7 +23,7 @@
         3px 3px 0px gray,
         4px 4px 0px black,
         5px 5px 10px black;
-    --image-size: 360px;
+    --image-size: 480px;
 }
 
 #mainContainer {
@@ -129,4 +130,135 @@
     margin-top: 25px;
     padding: 20px;
     border-radius: 20px;
+}
+
+#class-attribute-div {
+    width: 800px;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+#class-attribute-h3 {
+    font-size: var(--class-attribute-font);
+    color: var(--text-color);
+    text-shadow: var(--text-shadow);
+}
+
+#class-attribute-ul {
+    list-style-type: none;
+}
+
+.class-attribute-li {
+    font-size: var(--class-attribute-font);
+    color: var(--text-color);
+    text-shadow: var(--text-shadow);
+}
+
+/*
+Responsive Web Design: Tablet Screen Size
+*/
+@media (min-width: 769px) and (max-width: 1024px) {
+    :root {
+        --text-shadow:
+            1px 1px 0px gray,
+            2px 2px 0px gray,
+            3px 3px 0px black,
+            4px 4px 10px black;
+    }
+    #title-author-div {
+        height: 200px;
+    }
+    #title {
+        font-size: calc(var(--large-font) * 0.75);
+    }
+    #author {
+        font-size: calc(var(--small-font) * 0.75);
+    }
+    #imageToPredict {
+        width: 360px;
+        height: 360px;
+        border: 35px solid rgba(0, 0, 0, 0.5);
+        border-radius: 15px;
+    }
+    .button-style {
+        font-size: calc(var(--button-font) * 1.25);
+    }
+    #result {
+        font-size: calc(var(--prediction-font) * 0.75);
+        width: 600px;
+        margin-bottom: 20px;
+        margin-top: 20px;
+        padding: 15px;
+        border-radius: 15px;
+    }
+    #class-attribute-div {
+        width: 600px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        padding: 15px;
+        border-radius: 15px;
+    }
+    #class-attribute-h3 {
+        font-size: calc(var(--class-attribute-font) * 0.75);
+    }
+    .class-attribute-li {
+        font-size: calc(var(--class-attribute-font) * 0.75);
+    }
+}
+
+/*
+Responsive Web Design: Mobile (Phone) Screen Size
+*/
+@media (max-width: 768px) {
+    :root {
+        --text-shadow:
+            1px 1px 0px gray,
+            2px 2px 0px black,
+            3px 3px 10px black;
+    }
+    #title-author-div {
+        height: 100px;
+    }
+    #title {
+        font-size: calc(var(--large-font) * 0.5);
+    }
+    #author {
+        font-size: calc(var(--small-font) * 0.5);
+    }
+    #imageToPredict {
+        width: 240px;
+        height: 240px;
+        border: 20px solid rgba(0, 0, 0, 0.5);
+        border-radius: 10px;
+    }
+    .button-style {
+        font-size: calc(var(--button-font) * 1.5);
+    }
+    #result {
+        font-size: calc(var(--prediction-font) * 0.5);
+        width: 400px;
+        margin-bottom: 15px;
+        margin-top: 15px;
+        padding: 10px;
+        border-radius: 10px;
+    }
+    #class-attribute-div {
+        width: 400px;
+        margin-top: 15px;
+        margin-bottom: 15px;
+        padding: 10px;
+        border-radius: 10px;
+    }
+    #class-attribute-h3 {
+        font-size: calc(var(--class-attribute-font) * 0.5);
+    }
+    .class-attribute-li {
+        font-size: calc(var(--class-attribute-font) * 0.5);
+    }
 }
