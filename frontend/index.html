@@ -1,4 +1,4 @@
-<!--UPDATE VERSION [37]-->
+<!--UPDATE VERSION [38]-->
 
 <!--
 #==================================================
@@ -14,8 +14,8 @@
 <html>
     <head>
         <title>General Purpose Image Classifier & Analyser</title>
-        <!-- href = "/static/styles.css" -->
-        <link rel = "stylesheet" href = "./styles.css">
+        <!-- href = "./styles.css" -->
+        <link rel = "stylesheet" href = "/static/styles.css">
         <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
     </head>
     <body>
@@ -25,8 +25,8 @@
                 <h2 id = "author" class = "text-style">Developed By: Christian Tampus</h2>
             </div>
             <div id = "predictor-div">
-                <!-- src = "/static/images/placeholder.jpg" -->
-                <img id = "imageToPredict" src = "./images/placeholder.jpg" alt = "Image To Predict">
+                <!-- src = "./images/placeholder.jpg" -->
+                <img id = "imageToPredict" src = "/static/images/placeholder.jpg" alt = "Image To Predict">
                 <input type = "file" id = "imageInput" style = "display:none">
                 <label for = "imageInput" id = "imageInputLabel" class = "text-style button-style">Choose Image</label>
                 <button id = "predictButton" onclick = "predict()" class = "text-style button-style">Predict Image</button>
