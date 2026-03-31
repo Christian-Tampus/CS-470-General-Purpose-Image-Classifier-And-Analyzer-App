@@ -1,4 +1,4 @@
-#UPDATE VERSION [41]
+#UPDATE VERSION [42]
 
 #==================================================
 #Website Link: https://cs-470-ai-project-app-3c0cc8276da9.herokuapp.com/
