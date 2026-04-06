@@ -1,4 +1,4 @@
-/*UPDATE VERSION [48]*/
+/*UPDATE VERSION [49]*/
 
 /*
 #==================================================
@@ -133,7 +133,7 @@
 }
 
 #class-attribute-div {
-    width: 800px;
+    width: 90%;
     background-color: rgba(0, 0, 0, 0.5);
     display: block;
     margin-left: auto;
