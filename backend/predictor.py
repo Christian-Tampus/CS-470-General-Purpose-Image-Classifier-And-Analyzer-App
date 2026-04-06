@@ -1,4 +1,4 @@
-#UPDATE VERSION [46]
+#UPDATE VERSION [47]
 
 #==================================================
 #Class: CS-470 Artificial Intelligence
@@ -35,7 +35,7 @@ from tensorflow.keras.applications.efficientnet import preprocess_input
 #Important: Path To Base Directory
 BASE_DIRECTORY = Path(__file__).parent
 #IMPORTANT: CLASS_NAMES Must Be In The Same Order As It Is In The TrainingSet Directory!
-CLASS_NAMES = ["Cars", "Cats", "Characters", "ComputerParts", "Dogs", "Fish", "Food", "Humans", "Planes", "Tools"]
+CLASS_NAMES = ["Car", "Cat", "Character", "ComputerPart", "Dog", "Fish", "Food", "Human", "Plane", "Tool"]
 CAR_MODEL_ATTRIBUTES = ["Acura", "AlfaRomeo", "AstonMartin", "Audi", "BMW", "Bentley", "Bugatti", "Buick", "Cadillac", "Chevrolet", "Chrysler", "Citroen", "Daewoo", "Dodge", "Ferrari", "Fiat", "Ford", "GMC", "Genesis", "Honda", "Hudson", "Hyundai", "Infiniti", "Jaguar", "Jeep", "Kia", "LandRover", "Lexus", "Lincoln", "MG", "Maserati", "Mazda", "MercedesBenz", "Mini", "Mitsubishi", "Nissan", "Oldsmobile", "Peugeot", "Pontiac", "Porsche", "RamTrucks", "Renault", "Saab", "Studebaker", "Subaru", "Suzuki", "Tesla", "Toyota", "Volkswagen", "Volvo"]
 CAT_BREED_ATTRIBUTES = ["Abyssinian", "AmericanShortHair", "Bengal", "BritishShortHair", "DevonRex", "ExoticShortHair", "MaineCoon", "NorwegianForestCat", "Persian", "Ragdoll", "RussianBlue", "ScottishFold", "Siamese", "Siberian", "Sphynx"]
 DOG_BREED_ATTRIBUTES = ["Beagle", "BostonTerrier", "BullMastiff", "Bulldog", "Chihuahua", "Dalmation", "Doberman", "GermanSheperd", "GoldenRetriever", "GreatDane", "Labrador", "PitBull", "Poodle", "Rottweiler", "ShibaInu"]
