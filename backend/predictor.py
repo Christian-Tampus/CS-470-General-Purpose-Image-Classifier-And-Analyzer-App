@@ -1,4 +1,4 @@
-#UPDATE VERSION [45]
+#UPDATE VERSION [46]
 
 #==================================================
 #Class: CS-470 Artificial Intelligence
@@ -154,15 +154,6 @@ def downloadModel(modelPath: Path, googleDriveUrl: str):
         gdown.download(googleDriveUrl, str(modelPath), quiet = False)
 
 #==================================================
-#Garbage Collect Function
-#==================================================
-def garbageCollect(modelPath):
-    tf_backend.clear_session()
-    gc.collect()
-    #if modelPath.exists():
-        #os.remove(modelPath)
-
-#==================================================
 #Main Function
 #==================================================
 def main(imagePath):
@@ -178,8 +169,6 @@ def main(imagePath):
     attributeType = "Unknown"
     predictedAttribute = "Unknown"
     predictedAttributeConfidence = 0
-    del MAIN_CLASSIFIER_MODEL
-    garbageCollect(modelPath)
     match predictedClass:
         case "Car":
             imageArray = preprocessImage(imagePath, MODEL_IMAGE_SIZE["CAR_MODEL_ATTRIBUTE_CLASSIFIER_MODEL"])
@@ -192,8 +181,6 @@ def main(imagePath):
             attributeType = "Car Model"
             predictedAttribute = CAR_MODEL_ATTRIBUTES[attributePredictionIndex]
             predictedAttributeConfidence = float(attributePrediction[attributePredictionIndex])
-            del CAR_MODEL_ATTRIBUTE_CLASSIFIER_MODEL
-            garbageCollect(modelPath)
         case "Cat":
             imageArray = preprocessImage(imagePath, MODEL_IMAGE_SIZE["CAT_BREED_ATTRIBUTE_CLASSIFIER_MODEL"])
             modelPath = MODEL_DIRECTORY["CAT_BREED_ATTRIBUTE_CLASSIFIER_MODEL"]
@@ -205,8 +192,6 @@ def main(imagePath):
             attributeType = "Cat Breed"
             predictedAttribute = CAT_BREED_ATTRIBUTES[attributePredictionIndex]
             predictedAttributeConfidence = float(attributePrediction[attributePredictionIndex])
-            del CAT_BREED_ATTRIBUTE_CLASSIFIER_MODEL
-            garbageCollect(modelPath)
         case "Dog":
             imageArray = preprocessImage(imagePath, MODEL_IMAGE_SIZE["DOG_BREED_ATTRIBUTE_CLASSIFIER_MODEL"])
             modelPath = MODEL_DIRECTORY["DOG_BREED_ATTRIBUTE_CLASSIFIER_MODEL"]
@@ -218,8 +203,6 @@ def main(imagePath):
             attributeType = "Dog Breed"
             predictedAttribute = DOG_BREED_ATTRIBUTES[attributePredictionIndex]
             predictedAttributeConfidence = float(attributePrediction[attributePredictionIndex])
-            del DOG_BREED_ATTRIBUTE_CLASSIFIER_MODEL
-            garbageCollect(modelPath)
         case "Human":
             imageArray = preprocessImage(imagePath, MODEL_IMAGE_SIZE["HUMAN_RACE_ATTRIBUTE_CLASSIFIER_MODEL"])
             modelPath = MODEL_DIRECTORY["HUMAN_RACE_ATTRIBUTE_CLASSIFIER_MODEL"]
@@ -231,8 +214,6 @@ def main(imagePath):
             attributeType = "Human Race"
             predictedAttribute = HUMAN_RACE_ATTRIBUTES[attributePredictionIndex]
             predictedAttributeConfidence = float(attributePrediction[attributePredictionIndex])
-            del HUMAN_RACE_ATTRIBUTE_CLASSIFIER_MODEL
-            garbageCollect(modelPath)
         case "Character":
             imageArray = preprocessImage(imagePath, MODEL_IMAGE_SIZE["CHARACTER_TYPE_ATTRIBUTE_CLASSIFIER_MODEL"])
             modelPath = MODEL_DIRECTORY["CHARACTER_TYPE_ATTRIBUTE_CLASSIFIER_MODEL"]
@@ -244,8 +225,6 @@ def main(imagePath):
             attributeType = "Character Type"
             predictedAttribute = CHARACTER_TYPE_ATTRIBUTES[attributePredictionIndex]
             predictedAttributeConfidence = float(attributePrediction[attributePredictionIndex])
-            del CHARACTER_TYPE_ATTRIBUTE_CLASSIFIER_MODEL
-            garbageCollect(modelPath)
         case "Plane":
             imageArray = preprocessImage(imagePath, MODEL_IMAGE_SIZE["PLANE_MODEL_ATTRIBUTE_CLASSIFIER_MODEL"])
             modelPath = MODEL_DIRECTORY["PLANE_MODEL_ATTRIBUTE_CLASSIFIER_MODEL"]
@@ -257,8 +236,6 @@ def main(imagePath):
             attributeType = "Plane Model"
             predictedAttribute = PLANE_MODEL_ATTRIBUTES[attributePredictionIndex]
             predictedAttributeConfidence = float(attributePrediction[attributePredictionIndex])
-            del PLANE_MODEL_ATTRIBUTE_CLASSIFIER_MODEL
-            garbageCollect(modelPath)
         case "Fish":
             imageArray = preprocessImage(imagePath, MODEL_IMAGE_SIZE["FISH_SPECIES_ATTRIBUTE_CLASSIFIER_MODEL"])
             modelPath = MODEL_DIRECTORY["FISH_SPECIES_ATTRIBUTE_CLASSIFIER_MODEL"]
@@ -270,8 +247,6 @@ def main(imagePath):
             attributeType = "Fish Species"
             predictedAttribute = FISH_SPECIES_ATTRIBUTES[attributePredictionIndex]
             predictedAttributeConfidence = float(attributePrediction[attributePredictionIndex])
-            del FISH_SPECIES_ATTRIBUTE_CLASSIFIER_MODEL
-            garbageCollect(modelPath)
         case "Food":
             imageArray = preprocessImage(imagePath, MODEL_IMAGE_SIZE["FOOD_DISH_ATTRIBUTE_CLASSIFIER_MODEL"])
             modelPath = MODEL_DIRECTORY["FOOD_DISH_ATTRIBUTE_CLASSIFIER_MODEL"]
@@ -283,8 +258,6 @@ def main(imagePath):
             attributeType = "Food Dish"
             predictedAttribute = FOOD_DISH_ATTRIBUTES[attributePredictionIndex]
             predictedAttributeConfidence = float(attributePrediction[attributePredictionIndex])
-            del FOOD_DISH_ATTRIBUTE_CLASSIFIER_MODEL
-            garbageCollect(modelPath)
         case "Tool":
             imageArray = preprocessImage(imagePath, MODEL_IMAGE_SIZE["TOOL_TYPE_ATTRIBUTE_CLASSIFIER_MODEL"])
             modelPath = MODEL_DIRECTORY["TOOL_TYPE_ATTRIBUTE_CLASSIFIER_MODEL"]
@@ -296,8 +269,6 @@ def main(imagePath):
             attributeType = "Tool Type"
             predictedAttribute = TOOL_TYPE_ATTRIBUTES[attributePredictionIndex]
             predictedAttributeConfidence = float(attributePrediction[attributePredictionIndex])
-            del TOOL_TYPE_ATTRIBUTE_CLASSIFIER_MODEL
-            garbageCollect(modelPath)
         case "ComputerPart":
             imageArray = preprocessImage(imagePath, MODEL_IMAGE_SIZE["COMPUTERPART_PART_ATTRIBUTE_CLASSIFIER_MODEL"])
             modelPath = MODEL_DIRECTORY["COMPUTERPART_PART_ATTRIBUTE_CLASSIFIER_MODEL"]
@@ -309,8 +280,6 @@ def main(imagePath):
             attributeType = "Computer Part"
             predictedAttribute = COMPUTERPART_PART_ATTRIBUTES[attributePredictionIndex]
             predictedAttributeConfidence = float(attributePrediction[attributePredictionIndex])
-            del COMPUTERPART_PART_ATTRIBUTE_CLASSIFIER_MODEL
-            garbageCollect(modelPath)
     print(json.dumps({
         "Class": predictedClass,
         "Class Confidence": predictedClassConfidence,
