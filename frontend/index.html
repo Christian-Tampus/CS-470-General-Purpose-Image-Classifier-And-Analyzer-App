@@ -1,4 +1,4 @@
-<!--UPDATE VERSION [42]-->
+<!--UPDATE VERSION [43]-->
 
 <!--
 #==================================================
@@ -14,7 +14,7 @@
 <html>
     <head>
         <title>General Purpose Image Classifier & Analyser</title>
-        <!-- href = "./styles.css" -->
+        <!-- <link rel = "stylesheet" href = "./styles.css">  -->
         <link rel = "stylesheet" href = "/static/styles.css">
         <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
     </head>
@@ -25,7 +25,7 @@
                 <h2 id = "author" class = "text-style">Developed By: Christian Tampus</h2>
             </div>
             <div id = "predictor-div">
-                <!-- src = "./images/placeholder.jpg" -->
+                <!-- <img id = "imageToPredict" src = "./images/placeholder.jpg" alt = "Image To Predict"> -->
                 <img id = "imageToPredict" src = "/static/images/placeholder.jpg" alt = "Image To Predict">
                 <input type = "file" id = "imageInput" style = "display:none" accept = "image/*" capture>
                 <label for = "imageInput" id = "imageInputLabel" class = "text-style button-style">Choose Image</label>
@@ -40,6 +40,11 @@
                     <li class = "class-attribute-li text-style">Class: Car | Attribute: Car Model</li>
                     <li class = "class-attribute-li text-style">Class: Human | Attribute: Human Race</li>
                     <li class = "class-attribute-li text-style">Class: Character | Attribute: Character Type</li>
+                    <li class = "class-attribute-li text-style">Class: Plane | Attribute: Plane Model</li>
+                    <li class = "class-attribute-li text-style">Class: Fish | Attribute: Fish Species</li>
+                    <li class = "class-attribute-li text-style">Class: Food | Attribute: Food Dish</li>
+                    <li class = "class-attribute-li text-style">Class: Tool | Attribute: Tool Type</li>
+                    <li class = "class-attribute-li text-style">Class: ComputerPart | Attribute: Computer Part</li>
                 </ul>
             </div>
         </div>

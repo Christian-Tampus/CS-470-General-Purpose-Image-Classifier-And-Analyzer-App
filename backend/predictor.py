@@ -1,4 +1,4 @@
-#UPDATE VERSION [42]
+#UPDATE VERSION [43]
 
 #==================================================
 #Class: CS-470 Artificial Intelligence
@@ -41,6 +41,11 @@ CAT_BREED_ATTRIBUTES = ["Abyssinian", "AmericanShortHair", "Bengal", "BritishSho
 DOG_BREED_ATTRIBUTES = ["Beagle", "BostonTerrier", "BullMastiff", "Bulldog", "Chihuahua", "Dalmation", "Doberman", "GermanSheperd", "GoldenRetriever", "GreatDane", "Labrador", "PitBull", "Poodle", "Rottweiler", "ShibaInu"]
 HUMAN_RACE_ATTRIBUTES = ["Asian", "Black", "Indian", "White"]
 CHARACTER_TYPE_ATTRIBUTES = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+PLANE_MODEL_ATTRIBUTES = ["ATR", "Airbus", "Boeing", "C130", "F16"]
+FISH_SPECIES_ATTRIBUTES = ["Bangus", "CatFish", "GoldFish", "GreenSpottedPuffer", "Tilapia"]
+FOOD_DISH_ATTRIBUTES = ["Burger", "ChickenWings", "Donuts", "FrenchFries", "FriedRice", "HotDog", "IceCream", "Pizza", "Steak", "Taco"]
+TOOL_TYPE_ATTRIBUTES = ["Hammer", "Pliers", "ScrewDriver", "Wrench"]
+COMPUTERPART_PART_ATTRIBUTES = ["CPU", "Case", "GPU", "HDD", "Motherboard", "Ram"]
 
 #==================================================
 #Model Names
@@ -52,18 +57,28 @@ MODEL_NAMES = {
     "DOG_BREED_ATTRIBUTE_CLASSIFIER_MODEL": "DOG_BREED_ATTRIBUTE_CLASSIFIER_MODEL_VERSION_",
     "HUMAN_RACE_ATTRIBUTE_CLASSIFIER_MODEL": "HUMAN_RACE_ATTRIBUTE_CLASSIFIER_MODEL_VERSION_",
     "CHARACTER_TYPE_ATTRIBUTE_CLASSIFIER_MODEL": "CHARACTER_TYPE_ATTRIBUTE_CLASSIFIER_MODEL_VERSION_",
+    "PLANE_MODEL_ATTRIBUTE_CLASSIFIER_MODEL": "PLANE_MODEL_ATTRIBUTE_CLASSIFIER_MODEL_VERSION_",
+    "FISH_SPECIES_ATTRIBUTE_CLASSIFIER_MODEL": "FISH_SPECIES_ATTRIBUTE_CLASSIFIER_MODEL_VERSION_",
+    "FOOD_DISH_ATTRIBUTE_CLASSIFIER_MODEL": "FOOD_DISH_ATTRIBUTE_CLASSIFIER_MODEL_VERSION_",
+    "TOOL_TYPE_ATTRIBUTE_CLASSIFIER_MODEL": "TOOL_TYPE_ATTRIBUTE_CLASSIFIER_MODEL_VERSION_",
+    "COMPUTERPART_PART_ATTRIBUTE_CLASSIFIER_MODEL": "COMPUTERPART_PART_ATTRIBUTE_CLASSIFIER_MODEL_VERSION_",
 }
 
 #==================================================
 #Model Versions
 #==================================================
 MODEL_VERSIONS = {
-    "MAIN_CLASSIFIER_MODEL": 5,
+    "MAIN_CLASSIFIER_MODEL": 6,
     "CAR_MODEL_ATTRIBUTE_CLASSIFIER_MODEL": 1,
     "CAT_BREED_ATTRIBUTE_CLASSIFIER_MODEL": 1,
     "DOG_BREED_ATTRIBUTE_CLASSIFIER_MODEL": 1,
     "HUMAN_RACE_ATTRIBUTE_CLASSIFIER_MODEL": 1,
     "CHARACTER_TYPE_ATTRIBUTE_CLASSIFIER_MODEL": 2,
+    "PLANE_MODEL_ATTRIBUTE_CLASSIFIER_MODEL": 1,
+    "FISH_SPECIES_ATTRIBUTE_CLASSIFIER_MODEL": 1,
+    "FOOD_DISH_ATTRIBUTE_CLASSIFIER_MODEL": 1,
+    "TOOL_TYPE_ATTRIBUTE_CLASSIFIER_MODEL": 1,
+    "COMPUTERPART_PART_ATTRIBUTE_CLASSIFIER_MODEL": 1,
 }
 
 #==================================================
@@ -76,6 +91,11 @@ MODEL_IMAGE_SIZE = {
     "DOG_BREED_ATTRIBUTE_CLASSIFIER_MODEL": 224,
     "HUMAN_RACE_ATTRIBUTE_CLASSIFIER_MODEL": 224,
     "CHARACTER_TYPE_ATTRIBUTE_CLASSIFIER_MODEL": 128,
+    "PLANE_MODEL_ATTRIBUTE_CLASSIFIER_MODEL": 224,
+    "FISH_SPECIES_ATTRIBUTE_CLASSIFIER_MODEL": 224,
+    "FOOD_DISH_ATTRIBUTE_CLASSIFIER_MODEL": 224,
+    "TOOL_TYPE_ATTRIBUTE_CLASSIFIER_MODEL": 224,
+    "COMPUTERPART_PART_ATTRIBUTE_CLASSIFIER_MODEL": 224,
 }
 
 #==================================================
@@ -89,6 +109,11 @@ MODEL_DIRECTORY = {
     "DOG_BREED_ATTRIBUTE_CLASSIFIER_MODEL": BASE_DIRECTORY / "AIModels" / (MODEL_NAMES["DOG_BREED_ATTRIBUTE_CLASSIFIER_MODEL"] + str(MODEL_VERSIONS["DOG_BREED_ATTRIBUTE_CLASSIFIER_MODEL"]) + ".h5"),
     "HUMAN_RACE_ATTRIBUTE_CLASSIFIER_MODEL": BASE_DIRECTORY / "AIModels" / (MODEL_NAMES["HUMAN_RACE_ATTRIBUTE_CLASSIFIER_MODEL"] + str(MODEL_VERSIONS["HUMAN_RACE_ATTRIBUTE_CLASSIFIER_MODEL"]) + ".h5"),
     "CHARACTER_TYPE_ATTRIBUTE_CLASSIFIER_MODEL": BASE_DIRECTORY / "AIModels" / (MODEL_NAMES["CHARACTER_TYPE_ATTRIBUTE_CLASSIFIER_MODEL"] + str(MODEL_VERSIONS["CHARACTER_TYPE_ATTRIBUTE_CLASSIFIER_MODEL"]) + ".h5"),
+    "PLANE_MODEL_ATTRIBUTE_CLASSIFIER_MODEL": BASE_DIRECTORY / "AIModels" / (MODEL_NAMES["PLANE_MODEL_ATTRIBUTE_CLASSIFIER_MODEL"] + str(MODEL_VERSIONS["PLANE_MODEL_ATTRIBUTE_CLASSIFIER_MODEL"]) + ".h5"),
+    "FISH_SPECIES_ATTRIBUTE_CLASSIFIER_MODEL": BASE_DIRECTORY / "AIModels" / (MODEL_NAMES["FISH_SPECIES_ATTRIBUTE_CLASSIFIER_MODEL"] + str(MODEL_VERSIONS["FISH_SPECIES_ATTRIBUTE_CLASSIFIER_MODEL"]) + ".h5"),
+    "FOOD_DISH_ATTRIBUTE_CLASSIFIER_MODEL": BASE_DIRECTORY / "AIModels" / (MODEL_NAMES["FOOD_DISH_ATTRIBUTE_CLASSIFIER_MODEL"] + str(MODEL_VERSIONS["FOOD_DISH_ATTRIBUTE_CLASSIFIER_MODEL"]) + ".h5"),
+    "TOOL_TYPE_ATTRIBUTE_CLASSIFIER_MODEL": BASE_DIRECTORY / "AIModels" / (MODEL_NAMES["TOOL_TYPE_ATTRIBUTE_CLASSIFIER_MODEL"] + str(MODEL_VERSIONS["TOOL_TYPE_ATTRIBUTE_CLASSIFIER_MODEL"]) + ".h5"),
+    "COMPUTERPART_PART_ATTRIBUTE_CLASSIFIER_MODEL": BASE_DIRECTORY / "AIModels" / (MODEL_NAMES["COMPUTERPART_PART_ATTRIBUTE_CLASSIFIER_MODEL"] + str(MODEL_VERSIONS["COMPUTERPART_PART_ATTRIBUTE_CLASSIFIER_MODEL"]) + ".h5"),
 }
 
 #==================================================
@@ -99,12 +124,17 @@ MODEL_DIRECTORY = {
 #FILE_ID From Example Link: 1QD-VPbrukO4C_fBnPxbN0lWdPdvnzwif
 #Url Example: https://drive.google.com/uc?id=1QD-VPbrukO4C_fBnPxbN0lWdPdvnzwif
 MODEL_GOOGLE_DRIVE_URL = {
-    "MAIN_CLASSIFIER_MODEL": "https://drive.google.com/uc?id=1CZuOVz1IlRh0Fy9JJ3ZZMZ6RzN1izYzt",
-    "CAR_MODEL_ATTRIBUTE_CLASSIFIER_MODEL": "https://drive.google.com/uc?id=1QD-VPbrukO4C_fBnPxbN0lWdPdvnzwif",
-    "CAT_BREED_ATTRIBUTE_CLASSIFIER_MODEL": "https://drive.google.com/uc?id=1bpmt-IrAyFanHpzpSCd3bjNH5lN5fcUz",
-    "DOG_BREED_ATTRIBUTE_CLASSIFIER_MODEL": "https://drive.google.com/uc?id=18EL3n-8YRlcntQ3YsMpCt7AANcpdXHIc",
-    "HUMAN_RACE_ATTRIBUTE_CLASSIFIER_MODEL": "https://drive.google.com/uc?id=1YQK1m-E1Kr6W8gMkPux1qkPnfJJPY2o2",
-    "CHARACTER_TYPE_ATTRIBUTE_CLASSIFIER_MODEL": "https://drive.google.com/uc?id=1pNMeNlF4lU8q6JqfXIixdCeIRNeTdxXt",
+    "MAIN_CLASSIFIER_MODEL": "https://drive.google.com/uc?id=1jrB1__nucIQg5tyIBihsm57w9N7pbpKK",
+    "CAR_MODEL_ATTRIBUTE_CLASSIFIER_MODEL": "https://drive.google.com/uc?id=1POPEabHDgkz4beEi7OhUb1WxczPVspjB",
+    "CAT_BREED_ATTRIBUTE_CLASSIFIER_MODEL": "https://drive.google.com/uc?id=1qeelceGVNmw9IsUVGgsB1nRnzI5OiZLK",
+    "DOG_BREED_ATTRIBUTE_CLASSIFIER_MODEL": "https://drive.google.com/uc?id=15wRQ9645hDYUvyoTAbAuSEYcop_AUROP",
+    "HUMAN_RACE_ATTRIBUTE_CLASSIFIER_MODEL": "https://drive.google.com/uc?id=1N1a0-IkKWGUrMZqBFb9S0RNPrevZLT1w",
+    "CHARACTER_TYPE_ATTRIBUTE_CLASSIFIER_MODEL": "https://drive.google.com/uc?id=1-rD5ACmb3nFli5FfvXNZe2WiXq8daU0B",
+    "PLANE_MODEL_ATTRIBUTE_CLASSIFIER_MODEL": "https://drive.google.com/uc?id=1oHx98LZgXZjNU8qa0Jht7l-xm9Z5qUDJ",
+    "FISH_SPECIES_ATTRIBUTE_CLASSIFIER_MODEL": "https://drive.google.com/uc?id=1OKmTHvFyzXfQoWdr0TWXBPkgXmDN3NsB",
+    "FOOD_DISH_ATTRIBUTE_CLASSIFIER_MODEL": "https://drive.google.com/uc?id=1Or8jgAj8DwG7dNO3ZtbJm53Fans9-9Jg",
+    "TOOL_TYPE_ATTRIBUTE_CLASSIFIER_MODEL": "https://drive.google.com/uc?id=1r5Znagedo2VBA0qwX99Qrl_fY9RX-JX5",
+    "COMPUTERPART_PART_ATTRIBUTE_CLASSIFIER_MODEL": "https://drive.google.com/uc?id=1SV5S8dbxO7GuqQ8ttOQib5rC10JGveOm",
 }
 
 #==================================================
@@ -194,6 +224,61 @@ def main(imagePath):
             attributePredictionIndex = int(np.argmax(attributePrediction))
             attributeType = "Character Type"
             predictedAttribute = CHARACTER_TYPE_ATTRIBUTES[attributePredictionIndex]
+            predictedAttributeConfidence = float(attributePrediction[attributePredictionIndex])
+        case "Plane":
+            imageArray = preprocessImage(imagePath, MODEL_IMAGE_SIZE["PLANE_MODEL_ATTRIBUTE_CLASSIFIER_MODEL"])
+            modelPath = MODEL_DIRECTORY["PLANE_MODEL_ATTRIBUTE_CLASSIFIER_MODEL"]
+            googleDriveUrl = MODEL_GOOGLE_DRIVE_URL["PLANE_MODEL_ATTRIBUTE_CLASSIFIER_MODEL"]
+            downloadModel(modelPath, googleDriveUrl)
+            PLANE_MODEL_ATTRIBUTE_CLASSIFIER_MODEL = load_model(MODEL_DIRECTORY["PLANE_MODEL_ATTRIBUTE_CLASSIFIER_MODEL"])
+            attributePrediction = PLANE_MODEL_ATTRIBUTE_CLASSIFIER_MODEL.predict(imageArray, verbose = 0)[0]
+            attributePredictionIndex = int(np.argmax(attributePrediction))
+            attributeType = "Plane Model"
+            predictedAttribute = PLANE_MODEL_ATTRIBUTES[attributePredictionIndex]
+            predictedAttributeConfidence = float(attributePrediction[attributePredictionIndex])
+        case "Fish":
+            imageArray = preprocessImage(imagePath, MODEL_IMAGE_SIZE["FISH_SPECIES_ATTRIBUTE_CLASSIFIER_MODEL"])
+            modelPath = MODEL_DIRECTORY["FISH_SPECIES_ATTRIBUTE_CLASSIFIER_MODEL"]
+            googleDriveUrl = MODEL_GOOGLE_DRIVE_URL["FISH_SPECIES_ATTRIBUTE_CLASSIFIER_MODEL"]
+            downloadModel(modelPath, googleDriveUrl)
+            FISH_SPECIES_ATTRIBUTE_CLASSIFIER_MODEL = load_model(MODEL_DIRECTORY["FISH_SPECIES_ATTRIBUTE_CLASSIFIER_MODEL"])
+            attributePrediction = FISH_SPECIES_ATTRIBUTE_CLASSIFIER_MODEL.predict(imageArray, verbose = 0)[0]
+            attributePredictionIndex = int(np.argmax(attributePrediction))
+            attributeType = "Fish Species"
+            predictedAttribute = FISH_SPECIES_ATTRIBUTES[attributePredictionIndex]
+            predictedAttributeConfidence = float(attributePrediction[attributePredictionIndex])
+        case "Food":
+            imageArray = preprocessImage(imagePath, MODEL_IMAGE_SIZE["FOOD_DISH_ATTRIBUTE_CLASSIFIER_MODEL"])
+            modelPath = MODEL_DIRECTORY["FOOD_DISH_ATTRIBUTE_CLASSIFIER_MODEL"]
+            googleDriveUrl = MODEL_GOOGLE_DRIVE_URL["FOOD_DISH_ATTRIBUTE_CLASSIFIER_MODEL"]
+            downloadModel(modelPath, googleDriveUrl)
+            FOOD_DISH_ATTRIBUTE_CLASSIFIER_MODEL = load_model(MODEL_DIRECTORY["FOOD_DISH_ATTRIBUTE_CLASSIFIER_MODEL"])
+            attributePrediction = FOOD_DISH_ATTRIBUTE_CLASSIFIER_MODEL.predict(imageArray, verbose = 0)[0]
+            attributePredictionIndex = int(np.argmax(attributePrediction))
+            attributeType = "Food Dish"
+            predictedAttribute = FOOD_DISH_ATTRIBUTES[attributePredictionIndex]
+            predictedAttributeConfidence = float(attributePrediction[attributePredictionIndex])
+        case "Tool":
+            imageArray = preprocessImage(imagePath, MODEL_IMAGE_SIZE["TOOL_TYPE_ATTRIBUTE_CLASSIFIER_MODEL"])
+            modelPath = MODEL_DIRECTORY["TOOL_TYPE_ATTRIBUTE_CLASSIFIER_MODEL"]
+            googleDriveUrl = MODEL_GOOGLE_DRIVE_URL["TOOL_TYPE_ATTRIBUTE_CLASSIFIER_MODEL"]
+            downloadModel(modelPath, googleDriveUrl)
+            TOOL_TYPE_ATTRIBUTE_CLASSIFIER_MODEL = load_model(MODEL_DIRECTORY["TOOL_TYPE_ATTRIBUTE_CLASSIFIER_MODEL"])
+            attributePrediction = TOOL_TYPE_ATTRIBUTE_CLASSIFIER_MODEL.predict(imageArray, verbose = 0)[0]
+            attributePredictionIndex = int(np.argmax(attributePrediction))
+            attributeType = "Tool Type"
+            predictedAttribute = TOOL_TYPE_ATTRIBUTES[attributePredictionIndex]
+            predictedAttributeConfidence = float(attributePrediction[attributePredictionIndex])
+        case "ComputerPart":
+            imageArray = preprocessImage(imagePath, MODEL_IMAGE_SIZE["COMPUTERPART_PART_ATTRIBUTE_CLASSIFIER_MODEL"])
+            modelPath = MODEL_DIRECTORY["COMPUTERPART_PART_ATTRIBUTE_CLASSIFIER_MODEL"]
+            googleDriveUrl = MODEL_GOOGLE_DRIVE_URL["COMPUTERPART_PART_ATTRIBUTE_CLASSIFIER_MODEL"]
+            downloadModel(modelPath, googleDriveUrl)
+            COMPUTERPART_PART_ATTRIBUTE_CLASSIFIER_MODEL = load_model(MODEL_DIRECTORY["COMPUTERPART_PART_ATTRIBUTE_CLASSIFIER_MODEL"])
+            attributePrediction = COMPUTERPART_PART_ATTRIBUTE_CLASSIFIER_MODEL.predict(imageArray, verbose = 0)[0]
+            attributePredictionIndex = int(np.argmax(attributePrediction))
+            attributeType = "Computer Part"
+            predictedAttribute = COMPUTERPART_PART_ATTRIBUTES[attributePredictionIndex]
             predictedAttributeConfidence = float(attributePrediction[attributePredictionIndex])
     print(json.dumps({
         "Class": predictedClass,
