@@ -81,3 +81,4 @@
 ## Notes
 - This Project Classifies And Analyzes Images Across Multiple Classes And Their Attributes.
 - This Project Is Also Scalable And Can Easily Be Extended By Adding Any N Classes And Any M Attributes.
+- Accuracy Is Highly Dependent On The Quality & Quantity Of Images In The Datasets & Training Methods.
